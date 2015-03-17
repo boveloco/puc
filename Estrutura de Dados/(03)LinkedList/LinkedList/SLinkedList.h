@@ -17,8 +17,8 @@ public:
 	}
 
 	void InsertAfter(T p_data){
-		SLinkedNode<T>* newNode;
-		newNode = new SListNode();
+		SListNode<T>* newNode;
+		newNode = new SListNode<T>();
 		newNode->m_data = p_data;
 		newNode->m_next = m_next;
 		m_next = newNode;
@@ -50,7 +50,7 @@ public:
 	}
 	void Append(T p_data){
 		if (m_head == 0){
-			m_head = m_tail = new SListNode();
+			m_head = m_tail = new SListNode<T>();
 			m_head->m_data = p_data;
 		} else {
 			m_tail->InsertAfter(p_data);
