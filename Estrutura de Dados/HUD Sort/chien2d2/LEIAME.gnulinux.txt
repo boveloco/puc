@@ -1,0 +1,97 @@
+Chien2D v2.0 
+============
+
+1 - Descrição
+-------------
+
+A Chien2D é uma biblioteca multiplataforma para o desenvolvimento de jogos, 
+voltada para o aprendizado da linguagem C através da programação de jogos. Para
+maiores explicações sobre o uso da biblioteca e suas funções, por favor, 
+verifique a pasta "doc".
+
+A biblioteca é licenciada sob a licença Apache 2.0. Maiores detalhes sobre esta
+licença e os seus direitos para usar a biblioteca em seus programas, por favor,
+visite a página:
+
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+Resumo simplificado: você pode usar a biblioteca em seus programas, comerciais
+ou não, fazer alterações no código fonte, etc, desde que mantenha a licença 
+e as informações originais dos arquivos.
+
+2 - Instalando
+--------------
+
+Para compilar e instalar a lib Chien2D2 no seu computador, você deve possuir as
+seguintes bibliotecas instaladas na versão desenvolvimento:
+
+	- SDL
+	- SDL_mixer
+	- SDL_image
+	- OpenGL
+
+Opcionalmente, caso você deseje usar a linguagem Lua para desenvolver personagens,
+você também deve ter a seguinte lib disponível no seu sistema:
+
+	- Lua 5.1
+	
+Na pasta Chien2D2, digite o seguinte comando para construir a biblioteca mínima, 
+sem suporte a Lua:
+
+	make
+
+Para compilar também o módulo Lua, você deve usar o comando:
+
+   make all
+	
+Isto irá gerar uma biblioteca estática, que pode ser ligada e distribuída sem
+restrição em sua aplicação.Uma vez compilada sem erros, a biblioteca pode ser 
+instalada no sistema usando o comando:
+
+	sudo make install
+	
+Note que você deverá possuir direitos administrativos para executar esta última
+ação. Os arquivos da biblioteca são instalados em /usr/lib, já os includes em
+/usr/include, na pasta específica da biblioteca /usr/lib/c2d2.
+
+O processo foi testado em Ubuntu 10.04 64 bits, mas deve executar sem problemas
+em qualquer distribuição GNU Linux.
+	
+Para remover a biblioteca do sistema, como administrador do sistema, basta usar
+ o comando:
+
+   sudo make uninstall
+
+3 - Compilando um aplicativo
+----------------------------
+
+A compilação de um aplicativo pode envolver, além da inclusão dos arquivos de
+inclusão das bibliotecas. Os switches para a inclusão das bibliotecas são os 
+seguintes:
+	
+	-lSDL  (inclui a SDL. Obrigatório.)
+	-lSDL_image  (inclui a SDL_image. Obrigatório.)
+	-lSDL_mixer  (inclui a SDL_mixer, opcional, requerido pela ChienAudio2)
+	-lGL	(inclui a OpenGL, obrigatório)
+	-lGLU	(inclui a OpnGL Utilities, obrigatório)
+	-llua5.1	(inclui a Lua 5.1, opciona, requerido pela ChienLua2)
+	-lc2d2	(inclui a Chien2D 2.0, obrigatório)
+	-lca2	(inclui a ChienAudio 2.0, opcional, reprodução de sons)
+	-lcm2	(inclui a Chien2D2Mapa, opcional, para tilemaps do Mappy)
+	-lcator (inclui a Ator, opcional, define infra-estrutura de personagens)
+	-lc2d2lua (inclui a Chien2D 2.0 Lua, opcional, ligação com a linguagem LUA)
+	
+Estes switches devem ser informados ao g++, seja em linha de comando ou em IDEs
+como o NetBeans. Note que como este processo é de ligação, as libs devem ser espe-
+cificadas ao g++ após a definição do alvo, não antes. No caso do Netbeans, inclua
+os arquivos da lib no projeto, ao invés de parâmetros de linha de comando no Linker.
+
+4 - Contato:
+------------
+
+Se preciso, você pode contatar os autores via e-mail:
+
+	Paulo V. W. Radtke - pvwradtke@gmail.com
+	Fabio V. Binder - fbinder@gmail.com
+
+

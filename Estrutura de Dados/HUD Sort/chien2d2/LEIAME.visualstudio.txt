@@ -1,0 +1,118 @@
+Chien2D v2.0 
+============
+
+1 - Descrição
+-------------
+
+A Chien2D é uma biblioteca multiplataforma para o desenvolvimento de jogos, 
+voltada para o aprendizado da linguagem C através da programação de jogos. Para
+maiores explicações sobre o uso da biblioteca e suas funções, por favor, 
+verifique a pasta "doc".
+
+A biblioteca é licenciada sob a licença Apache 2.0. Maiores detalhes sobre esta
+licença e os seus direitos para usar a biblioteca em seus programas, por favor,
+visite a página:
+
+	http://www.apache.org/licenses/LICENSE-2.0
+	
+Resumo simplificado: você pode usar a biblioteca em seus programas, comerciais
+ou não, fazer alterações no código fonte, etc, desde que mantenha a licença 
+e as informações originais dos arquivos.
+
+2 - Instalando
+--------------
+
+Para compilar e instalar a lib Chien2D2 no seu computador, você deve possuir as
+seguintes bibliotecas instaladas na versão desenvolvimento:
+
+	- SDL
+	- SDL_mixer
+	- SDL_image
+	- OpenGL
+	- Lua 5.1
+	
+Caso não possua as bibliotecas, existe um pacote pré compilador para Windows neste 
+link: http://chien2d.googlecode.com/files/Dependencias_win32_20100824.zip
+Basta fazer o download e extrair o conteudo do arquivo no mesmo diretório da Chien2D.
+
+Os projetos já estão todos pré-configurados para utilizar o pacote de dependências acima, bastando apenas
+extrair o conteudo do pacote para o mesmo diretório da Chien2D. 
+
+Caso não queira utilizar o pacote de dependências e tenho dificuldade para configurar
+as bibliotecas manualmente, recomendamos a leitura: http://www.pontov.com.br/site/index.php/cpp/46-conceitos-basicos/155-como-usar-bibliotecas-cc
+	
+Na pasta Exemplos\TowerDefenseLua, abra o arquivo Projeto1.sln e escolha a opção Rebuild Solution.
+
+Isto irá gerar uma biblioteca estática, que pode ser ligada e distribuída sem
+restrição em sua aplicação. Também será gerado o executável do exemplo, Tower Defense.
+	
+Os arquivos da biblioteca estão em C2D2\lib, já os includes em
+C2D2\include.
+	
+3 - Compilando um aplicativo
+----------------------------
+
+A compilação de um aplicativo pode envolver, além da inclusão dos arquivos de
+inclusão das bibliotecas. As bibliotecas para inclusão são as 
+seguintes (todas com extensão .lib):
+	
+	SDL			(inclui a SDL. Obrigatório.)
+	SDL_image	(inclui a SDL_image. Obrigatório.)
+	SDL_mixer   (inclui a SDL_mixer, opcional, requerido pela ChienAudio2)
+	Opengl32	(inclui a OpenGL, obrigatório)
+	GLU32		(inclui a OpnGL Utilities, obrigatório)
+	lua5.1		(inclui a Lua 5.1, opciona, requerido pela ChienLua2)
+	c2d2		(inclui a Chien2D 2.0, obrigatório)
+	ca2			(inclui a ChienAudio 2.0, opcional, reprodução de sons)
+	cm2			(inclui a Chien2D2Mapa, opcional, para tilemaps do Mappy)
+	cator		(inclui a Ator, opcional, define infra-estrutura de personagens)
+	c2d2lua		(inclui a Chien2D 2.0 Lua, opcional, ligação com a linguagem LUA)
+	
+Estas bibliotecas devem ser inseridas nas "input libraries" do visual studio.
+
+4 - Compilando e Rodando os exemplos
+------------------------------------
+
+Dentro de Exemplos\ existe o arquivo Projeto1.sln, que é uma solução pronta para o Visual Studio C++,
+que pode ser usada com a versão comercial ou com a versão express (gratís).
+
+Caso não conheça o Visual C++: http://www.pontov.com.br/site/index.php/cpp/41-visual-c/59-como-utilizar-o-visual-c-parte-1
+
+Abrindo a solução deve-se encontrar os projetos:
+ - 01-imagens
+ - 02-loopjogo
+ - 03-animacao
+ - 05-megademo
+ - 06-baloes
+ - 07-tilemap
+ - c2d2
+ - c2d2lua
+ - ca2
+ - cator
+ - cmd2
+ - ExemploLua
+ 
+Os projetos numerados de 01 a 07 são os exemplos oficiais e "ExemploLua" demonstra como integrar lua com projetos Chien. Todos estes
+projetos geram executáveis, os demais geram as bibliotecas da Chiem que podem ser usadas com outros projetos.
+
+Para compilar os exemplos, basta clicar em um deles, por exemplo, "01-imagens" então clicar com o botão direito do mouse e selecionar
+a opção "Set as Startup Project". Basta agora pressionar F5 para que o projeto seja compilado e executado em modo debug.
+
+Caso ocorra um erro de "dll não encontrada" é preciso então configurar o projeto para encontrar as dlls necessárias, caso
+você esteja usando o pacote de depêndencias da Chien, basta então clicar no projeto com o botão direito, selecionar "Propriedades" e
+então na janela que se abriu clique em "Debugging" e na opção "Environment" coloque: PATH=$(SolutionDir)..\Dependencias\SDL\lib;$(SolutionDir)..\Dependencias\SDL_mixer\lib;$(SolutionDir)..\Dependencias\SDL_image\lib
+
+Caso não esteja usando o pacote de depêndencias configure a variável PATH de acordo com os caminhos do seu sistema
+
+5 - Contato:
+------------
+
+Se preciso, você pode contatar os autores via e-mail:
+
+	Paulo V. W. Radtke - pvwradtke@gmail.com
+	Fabio V. Binder - fbinder@gmail.com
+	
+Suporte versão Windows:
+  Bruno C. Sanches - bcsanches@gmail.com 
+
+

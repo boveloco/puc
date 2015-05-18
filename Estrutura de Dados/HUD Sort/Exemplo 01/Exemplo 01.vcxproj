@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{78A080B4-A913-4C79-83E9-1F2A32422136}</ProjectGuid>
+    <RootNamespace>Exemplo01</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>../chien2d2/include;../chien2d2\dependencias\SDL\include;../chien2d2\dependencias\SDL_image\include;../chien2d2\dependencias\lua\include;../chien2d2\dependencias\SDL_mixer\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\chien2d2\dependencias\SDL\lib;..\chien2d2\dependencias\SDL_mixer\lib;..\chien2d2\dependencias\SDL_image\lib;..\chien2d2\dependencias\lua;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>SDL_mixer.lib;lua5.1.lib;lua51.lib;SDL.lib;SDLmain.lib;SDL_image.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\chien2d2\src\ator.cpp" />
+    <ClCompile Include="..\chien2d2\src\atorlua.cpp" />
+    <ClCompile Include="..\chien2d2\src\chien2d2.cpp" />
+    <ClCompile Include="..\chien2d2\src\chien2d2lua.cpp" />
+    <ClCompile Include="..\chien2d2\src\chien2d2mapa.cpp" />
+    <ClCompile Include="..\chien2d2\src\chien2d2primitivas.cpp" />
+    <ClCompile Include="..\chien2d2\src\chien2d2primitivas_gl.cpp" />
+    <ClCompile Include="..\chien2d2\src\chien2d2primitivas_sdl.cpp" />
+    <ClCompile Include="..\chien2d2\src\chien2d2_gl.cpp" />
+    <ClCompile Include="..\chien2d2\src\chien2d2_sdl.cpp" />
+    <ClCompile Include="..\chien2d2\src\chienaudio2.cpp" />
+    <ClCompile Include="..\chien2d2\src\chienaudio2lua.cpp" />
+    <ClCompile Include="..\chien2d2\src\chienlua2.cpp" />
+    <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="blue.png" />
+    <Image Include="green.png" />
+    <Image Include="mouse.png" />
+    <Image Include="Megaman_sprite.jpg" />
+    <Image Include="red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="bomba.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Array.h" />
+    <ClInclude Include="BubbleSort.h" />
+    <ClInclude Include="DLinkedList.h" />
+    <ClInclude Include="Quadradinho.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
