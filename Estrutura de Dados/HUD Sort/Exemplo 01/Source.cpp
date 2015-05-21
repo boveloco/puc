@@ -123,7 +123,10 @@ int main(int ac, char **av)
 		if (mouse->botoes->ativo)
 			C2D2PGL_RetanguloPintadoAlfa(pontoInicialX, pontoInicialY,mouse->x, mouse->y, 0, 0, 140, 80);
 
-		if (mouse->botoes->liberado){
+		if (mouse->botoes->liberado){ 
+			for (size_t i = 0; i < objcs2.Size(); i++){
+				objcs2[i] = Quadradinho();
+			}
 			std::cout << "Mouse x: " << mouse->x << std::endl;
 			std::cout << "Mouse y: " << mouse->y << std::endl;
 			std::cout << "PontoInicialX: " << pontoInicialX << std::endl;
@@ -131,6 +134,7 @@ int main(int ac, char **av)
 			std::cout << std::endl;
 			std::cout << "--------------------------------------------" << std::endl;
 			for (size_t i = 0; i < objcs.Size(); i++){
+				objcs2.Resize(10);
 				if (pontoInicialX <= objcs[i].getPosX() && mouse->x >= objcs[i].getPosX()){
 					if (pontoInicialY <= objcs[i].getPosY() && mouse->y >= objcs[i].getPosY()){
 						std::cout << "Objeto :" << i << std::endl;
@@ -139,7 +143,7 @@ int main(int ac, char **av)
 						std::cout << "Pox y" << objcs[i].getPosY() << std::endl;
 						std::cout << std::endl;
 						objcs2.Insert(objcs.m_array[i], i);
-						objcs.Remove(i);
+						//objcs.Remove(i);
 					}
 				}
 			}
