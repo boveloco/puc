@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Card.h"
 
 enum InstantType {
@@ -17,7 +18,5 @@ public:
 	~CardInstant();
 protected:
 	InstantType type;
-
-private:
-
 };
+

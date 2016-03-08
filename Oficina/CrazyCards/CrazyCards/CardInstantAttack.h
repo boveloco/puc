@@ -1,4 +1,5 @@
 #pragma once
+
 #include "CardInstant.h"
 
 class Hero;
@@ -10,8 +11,7 @@ public:
 	virtual void print();
 	virtual void runAction(Hero *);
 	~CardInstantAttack();
-
 private:
 	int attack;
-
 };
+

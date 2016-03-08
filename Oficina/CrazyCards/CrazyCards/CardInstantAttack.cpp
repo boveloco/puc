@@ -1,16 +1,15 @@
 #include "CardInstantAttack.h"
 #include "Hero.h"
 
-
-
 CardInstantAttack::CardInstantAttack(string title, InstantType type, int attack)
-	: CardInstant(title, type)
+	:CardInstant(title, type)
 {
 	this->attack = attack;
 }
 
 void CardInstantAttack::print()
 {
+	CardInstant::print();
 	cout << "Attack Bonus: " << attack << endl;
 }
 

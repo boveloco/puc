@@ -1,23 +1,20 @@
 #include <iostream>
-#include <string>
-#include "Hero.h"
 #include "CardInstantAttack.h"
+#include "Hero.h"
+
 int main(int argc, char *argv) {
 	
-	Hero h(10, 20);
-	h.print();
+	Hero hero(10, 20);
+	hero.print();
 
 	CardInstantAttack *cia = new CardInstantAttack("Motivation", INSTANTTYPE_ATTACK, 3);
+	cia->runAction(&hero);
 	cia->print();
-	cia->runAction(&h);
-	h.print();
+	hero.print();
 
 	CardInstant *instant = cia;
 	instant->print();
 
 	Card *card = cia;
 	card->print();
-
-	system("PAUSE");
-	return 0;
 }
