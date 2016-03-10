@@ -1,16 +1,12 @@
 #include "Hero.h"
 
-Hero::Hero(int attack, int defense)
+Hero::Hero(int attack, int defense, int life)
 {
 	this->attack = attack;
 	this->defense = defense;
-}
-
-void Hero::print()
-{
-	cout << "Hero" << endl;
-	cout << "Attack: " << attack << endl;
-	cout << "Defense: " << defense << endl;
+	this->life = life;
+	this->debuffAttack = 0;
+	this->debuffDefense = 0;
 }
 
 Hero::~Hero()

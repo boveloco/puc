@@ -4,10 +4,10 @@
 class CardEquipment : public Card
 {
 public:
-	CardEquipment();
+	CardEquipment(string);
 	~CardEquipment();
 
-	void buff(int, int);
+	virtual void print();
 	bool use();
 private:
 	int duration;

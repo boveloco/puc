@@ -35,7 +35,9 @@ Deck::Deck(int n) {
 		switch (rand() % 3)
 		{
 		case typeCard::INSTANT_CARD:
-			this->deck.push_back(new Card)
+			this->deck.push_back(new CardInstantAttack("Instant Attack", 10));
+
+			break;
 
 
 		default:

@@ -1,9 +1,9 @@
 #include "CardInstant.h"
 
-CardInstant::CardInstant(string title, InstantType type)
-	:Card(title)
+CardInstant::CardInstant(string title, actionType actionType, typeCard cardType)
+	:Card(title, cardType)
 {
-	this->type = type;
+	this->type = actionType;
 }
 
 void CardInstant::print()

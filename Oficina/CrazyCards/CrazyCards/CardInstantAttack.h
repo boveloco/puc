@@ -7,7 +7,7 @@ class Hero;
 class CardInstantAttack : public CardInstant
 {
 public:
-	CardInstantAttack(string, InstantType, int);
+	CardInstantAttack(string, int);
 	virtual void print();
 	virtual void runAction(Hero *);
 	~CardInstantAttack();

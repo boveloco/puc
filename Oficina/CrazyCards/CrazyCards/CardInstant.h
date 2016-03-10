@@ -2,9 +2,9 @@
 
 #include "Card.h"
 
-enum InstantType {
-	INSTANTTYPE_ATTACK,
-	INSTANTTYPE_DEFENSE
+enum actionType {
+	INSTANT_TYPE_ATTACK,
+	INSTANT_TYPE_DEFENSE
 };
 
 class Hero;
@@ -12,11 +12,11 @@ class Hero;
 class CardInstant : public Card
 {
 public:
-	CardInstant(string, InstantType);
+	CardInstant(string, actionType, typeCard);
 	virtual void runAction(Hero *) = 0;
 	virtual void print();
 	~CardInstant();
 protected:
-	InstantType type;
+	actionType type;
 };
 

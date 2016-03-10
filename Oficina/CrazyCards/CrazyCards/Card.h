@@ -5,8 +5,7 @@
 
 using namespace std;
 enum typeCard {
-	INSTANT_ATTACK_CARD,
-	INSTANT_DEFENSE_CARD,
+	INSTANT_CARD,
 	UNITY_CARD,
 	EQUIPMENT_CARD
 };
@@ -14,7 +13,7 @@ enum typeCard {
 class Card
 {
 public:
-	Card(string);
+	Card(string, typeCard);
 	virtual void print() = 0;
 	~Card();
 	typeCard type;

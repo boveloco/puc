@@ -6,17 +6,20 @@ using namespace std;
 
 class Hero
 {
-public:
-	Hero(int, int);
-	void print();
-	int getAttack() { return attack; }
-	void setAttack(int attack) { this->attack = attack; }
-	int getDefense() { return defense; }
-	void setDefense(int defense) { this->defense = defense; }
+protected:
+	Hero(int, int, int);
+	virtual int getAttack() { return attack; }
+	virtual void setAttack(int attack) { this->attack = attack; }
+	virtual int getDefense() { return defense; }
+	virtual void setDefense(int defense) { this->defense = defense; }
+	virtual int getLife() { return life; }
+	virtual void setLife(int life) { this->life = life; }
 	~Hero();
 private:
 	int attack;
 	int defense;
-	Card* buff;
+	int life;
+	int debuffAttack;
+	int debuffDefense;
 };
 

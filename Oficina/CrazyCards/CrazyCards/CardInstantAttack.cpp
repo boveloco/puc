@@ -1,8 +1,7 @@
+#include "Card.h"
 #include "CardInstantAttack.h"
-#include "Hero.h"
-
-CardInstantAttack::CardInstantAttack(string title, InstantType type, int attack)
-	:CardInstant(title, type)
+CardInstantAttack::CardInstantAttack(string title, int attack)
+	:CardInstant(title, INSTANT_TYPE_ATTACK, INSTANT_CARD)
 {
 	this->attack = attack;
 }
@@ -15,7 +14,7 @@ void CardInstantAttack::print()
 
 void CardInstantAttack::runAction(Hero *hero)
 {
-	hero->setAttack(hero->getAttack() + attack);
+	//TODO remove ataque do target durante um turno
 }
 
 CardInstantAttack::~CardInstantAttack()
