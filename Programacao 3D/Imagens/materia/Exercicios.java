@@ -134,5 +134,22 @@ public class Exercicios {
             return out;
         }
         
+        public BufferedImage egaTable(BufferedImage img){
+        	BufferedImage out = new BufferedImage(img.getHeight(), img.getWidth(), img.getType());
+        	for (int i = 0; i < img.getHeight(); i++) {
+        		for (int j = 0; j < img.getWidth(); j++) {
+        			Color c = new Color(img.getRGB(i, j));
+        			int r = (c.getRed() % 64 ) * 64;
+        			int g = (c.getGreen() % 64 ) * 64;
+        			int b = (c.getBlue() % 64 ) * 64;
+        			
+        			out.setRGB(i, j, new Color(r,g,b).getRGB());
+				}
+				
+			}
+        	
+        	return out;
+        }
+        
         
 }

@@ -92,4 +92,27 @@ public class RGBAf  {
             
         }
         
+        public BufferedImage multiply(BufferedImage img, float rgb[]){
+        	for (int i = 0; i < rgb.length; i++) {
+				if (rgb[i] > 1) {
+					return null;
+				}
+			}
+        	
+        	BufferedImage out = new BufferedImage(img.getHeight(), img.getWidth(), img.getType());
+        	for (int i = 0; i < img.getHeight(); i++) {
+        		for (int j = 0; j < img.getWidth(); j++) {
+        			Color c = new Color(img.getRGB(i, j));
+        			
+        			float r = c.getRed() * rgb[0];
+        			float g = c.getGreen() * rgb[1];
+        			float b = c.getBlue() * rgb[2];
+        					
+					out.setRGB(i, j, new Color(r,g,b).getRGB());
+				}
+				
+			}
+        	return out;
+        }
+        
 }
