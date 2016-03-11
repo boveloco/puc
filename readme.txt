@@ -1,14 +1,6 @@
-Commands
+Todo conteúdo é plenamente DIDÁTICO 
 
+Utilizado apenas durante a aprendizagem nas aulas e trabalhos voltados a faculdade.
 
-echo # adss >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/boveloco/***.git
-git push -u origin master
-�or push an existing repository from the command line
+Qualquer problema, erro podem me enviar um e-mail.
 
-
-git remote add origin https://github.com/boveloco/***.git
-git push -u origin master
