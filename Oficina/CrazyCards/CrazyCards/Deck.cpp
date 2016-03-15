@@ -1,8 +1,15 @@
 #include <algorithm>
-#include <time.h>
+
+#include <ctime>
+#include <vector>
+
 #include "CardInstant.h"
+#include "CardEquipment.h"
 #include "CardInstantAttack.h"
+
 #include "Deck.h"
+#include "Unity.h"
+
 
 void Deck::shuffle()
 {
@@ -13,7 +20,7 @@ void Deck::shuffle()
 void Deck::remove(int n)
 {
 	delete this->deck[n];
-	this->deck.erase[n];
+	this->deck.erase(deck.begin() + n);
 }
 
 Card* Deck::draw()
@@ -31,19 +38,22 @@ Card* Deck::draw()
 Deck::Deck(int n) {
 	srand(time(NULL));
 
-	for (size_t i = 0; i < n; i++){
+	for (size_t i = 0; i < n; i++) {
 		switch (rand() % 3)
 		{
 		case typeCard::INSTANT_CARD:
 			this->deck.push_back(new CardInstantAttack("Instant Attack", 10));
-
 			break;
-
+		case typeCard::EQUIPMENT_CARD:
+			this->deck.push_back(new CardEquipment("Aumenta Vida", 2, 10));
+			break;
+		case typeCard::UNITY_CARD:
+			this->deck.push_back(new Unity("Jorge", 1, 2));
+			break;
 
 		default:
 			break;
 		}
-		this->deck.push_back()
 	}
 }
 

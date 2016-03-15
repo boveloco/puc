@@ -2,16 +2,17 @@
 #include "Card.h"
 #include "Hero.h"
 #include "CardEquipment.h"
+#include "Hero.h"
 #include <vector>
 
-class Unit : public Card, Hero
+class Unity : public Card, Hero
 {
 public:
-	Unit(string, int, int);
+	Unity(string, int, int);
 	virtual void print();
 	void attack();
-	~Unit();
+	~Unity();
 
 private:
-	CardEquipment equips;
+	CardEquipment* equips;
 };

@@ -147,8 +147,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CardEquipment.cpp" />
     <ClCompile Include="CardInstant.cpp" />
     <ClCompile Include="CardInstantAttack.cpp" />
+    <ClCompile Include="CardInstantDefense.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -159,6 +161,7 @@
     <ClInclude Include="CardEquipment.h" />
     <ClInclude Include="CardInstant.h" />
     <ClInclude Include="CardInstantAttack.h" />
+    <ClInclude Include="CardInstantDefense.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Unity.h" />

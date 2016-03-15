@@ -1,13 +1,13 @@
 #include "Unity.h"
 
-Unit::Unit(string title, int attack, int defense):
-	Card::Card(title, UNITY_CARD),
-	Hero::Hero(attack, defense)
+Unity::Unity(string title, int attack, int defense)
+	: Card(title, UNITY_CARD),
+	  Hero(attack, defense, 3)
 {
 
 }
 
-void Unit::print()
+void Unity::print()
 {
 	std::cout << "Meu nome e: " 
 			  << title
@@ -18,7 +18,12 @@ void Unit::print()
 		      << std::endl;
 }
 
-Unit::~Unit()
+void Unity::attack()
+{
+	//TODO: mim faiz
+}
+
+Unity::~Unity()
 {
 }
 

@@ -36,6 +36,12 @@
     <ClCompile Include="Unity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CardInstantDefense.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CardEquipment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hero.h">
@@ -57,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Unity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CardInstantDefense.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

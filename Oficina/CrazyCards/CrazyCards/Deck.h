@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Card.h"
 #include <vector>
+
+class Card;
 
 using namespace std;
 class Deck
@@ -11,16 +12,14 @@ public:
 	Deck(int);
 	~Deck();
 
-private:
-	vector<Card *> &deck;
-
-	//embaralhar deck
-	void shuffle();
-
-	//remove carta
-	void remove(int n);
-
 	//comprar carta
 	Card* draw();
 
+private:
+	vector<Card *> deck;
+
+	//embaralhar deck
+	void shuffle();
+	//remove carta
+	void remove(int n);
 };
