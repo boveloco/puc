@@ -42,7 +42,7 @@ public class Teste {
 	private void testeBright(String path, float intensity) {
 		BufferedImage img = this.loadFile(path);
 		BufferedImage out = this.ex.bright(img, intensity);
-		this.writeFile("C:/Users/Proj/Desktop/img/", out, "bright");
+		this.writeFile(this.path, out, "bright");
 		System.out.println("Teste Bright -- OK");
 	}
 	private void testeAdd(String path1, String path2){
@@ -71,10 +71,10 @@ public class Teste {
 		this.writeFile(this.path, out, "Lerp");
 		System.out.println("Lerp -- OK");
 	}
-	private void testeLinha(String path, int x1, int x2, int y1, int y2){
+	private void testeLinha(String path, int x1, int y1, int x2, int y2){
 		BufferedImage img = this.loadFile(path);
 		Color c = new Color(255, 0, 0);
-		BufferedImage out = this.ex.linha(img, x1, x2, y1, y2, c);
+		BufferedImage out = this.ex.linha(img, x1, y1, x2, y2, c);
 		this.writeFile(this.path, out, "Linha");
 		System.out.println("Linha -- OK");
 	}
@@ -97,15 +97,17 @@ public class Teste {
 		this.testeBright("img/cor/mario.jpg", 3);
 		this.testeEgaTable("img/cor/mario.jpg");
 		this.testeGrayScale("img/cor/mario.jpg");
-		this.testeLerp ("img/cor/mario.jpg", "img/cor/sonic.jpg", 5);
-		this.testeLinha("img/cor/mario.jpg", 1, -1, 1, 1000);
+		this.testeLerp ("img/cor/mario.jpg", "img/cor/sonic.jpg", 0.5f);
+		this.testeLinha("img/cor/mario.jpg", 200, 100, 150, 300);
 		this.testeSubtract("img/pb/errosB1.png", "img/pb/errosB2.png");
-		this.testeThreshold("img/pb/errosB1.png", 3);
+		this.testeThreshold("img/cor/mario.jpg", 255);
+		
 	}
 	public static void main(String[] args) {
 		System.out.println("Executando testes...");
 		Teste t = new Teste();		
 		t.testImg();
+		
 		
 		
 	}
