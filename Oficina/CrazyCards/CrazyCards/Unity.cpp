@@ -18,9 +18,18 @@ void Unity::print()
 		      << std::endl;
 }
 
-void Unity::attack()
+Card* Unity::use()
 {
-	//TODO: mim faiz
+	return this;
+}
+
+bool Unity::attack(Unity* target)
+{
+	if ((target->getLife() - this->attack) > 0) {
+		target->setLife(target->getLife() - this->attack);
+		return false;
+	}
+	return true;
 }
 
 Unity::~Unity()

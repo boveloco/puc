@@ -15,6 +15,7 @@ class Card
 public:
 	Card(string, typeCard);
 	virtual void print() = 0;
+	virtual Card* use() = 0;
 	~Card();
 	typeCard type;
 protected:

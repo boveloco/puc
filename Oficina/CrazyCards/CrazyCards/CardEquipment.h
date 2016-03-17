@@ -9,7 +9,7 @@ public:
 	~CardEquipment();
 
 	virtual void print();
-	bool use();
+	Card* use();
 	int getLife() const;
 	void setLife(int);
 private:

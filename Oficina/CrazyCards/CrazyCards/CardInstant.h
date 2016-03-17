@@ -13,7 +13,7 @@ class CardInstant : public Card
 {
 public:
 	CardInstant(string, actionType, typeCard);
-	virtual void runAction(Hero *) = 0;
+	virtual Card* use(Hero *) = 0;
 	virtual void print();
 	~CardInstant();
 protected:

@@ -19,7 +19,6 @@ void Deck::shuffle()
 
 void Deck::remove(int n)
 {
-	delete this->deck[n];
 	this->deck.erase(deck.begin() + n);
 }
 

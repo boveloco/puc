@@ -8,8 +8,8 @@ class CardInstantAttack : public CardInstant
 {
 public:
 	CardInstantAttack(string, int);
-	virtual void print();
-	virtual void runAction(Hero *);
+	void print();
+	Card* use(Hero *);
 	~CardInstantAttack();
 private:
 	int attack;

@@ -13,9 +13,10 @@ void CardInstantDefense::print()
 
 }
 
-void CardInstantDefense::runAction(Hero *)
+Card* CardInstantDefense::use(Hero *)
 {
 	//TODO remove ataque do target durante um turno
+	return nullptr;
 }
 
 CardInstantDefense::~CardInstantDefense()

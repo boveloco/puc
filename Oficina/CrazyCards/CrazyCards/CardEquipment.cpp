@@ -24,8 +24,8 @@ void CardEquipment::setLife(int life) {
 int CardEquipment::getLife() const{
 	return this->life;
 }
-bool CardEquipment::use()
+Card* CardEquipment::use()
 {
 	//TODO: mim faiz moçu
-	return false;
+	return nullptr;
 }

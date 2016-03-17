@@ -10,7 +10,7 @@ class CardInstantDefense : public CardInstant
 public:
 	CardInstantDefense(string, int);
 	virtual void print();
-	virtual void runAction(Hero *);
+	virtual Card* use(Hero *);
 	~CardInstantDefense();
 private:
 	int defense;

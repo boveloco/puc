@@ -12,9 +12,10 @@ void CardInstantAttack::print()
 	cout << "Attack Bonus: " << attack << endl;
 }
 
-void CardInstantAttack::runAction(Hero *hero)
+Card* CardInstantAttack::use(Hero *hero)
 {
-	//TODO remove ataque do target durante um turno
+	//TODO: remove ataque do target durante um turno
+	return nullptr;
 }
 
 CardInstantAttack::~CardInstantAttack()
