@@ -239,4 +239,31 @@ public class Exercicios {
 		}
 		return 0;
 	}
+	
+	public BufferedImage kernel(BufferedImage img, float[][] kernel){
+		BufferedImage out = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
+		for (int i = 0; i < img.getWidth(); i++) {
+			for (int j = 0; j < img.getHeight(); j++) {
+				
+				
+				for (int jx = 0; jx < 3; jx++) {
+					for (int jy = 0; jy < 3; jy++) {
+						int px = j + jx -1;
+						int py = i + jy -1;
+						if(px < 0 || px >= img.getWidth() || py < 0 || py>=img.getWidth())
+							continue;
+						
+						Color c = new Color(img.getRGB(py, px));
+						int r = (int) (c.getRed() * kernel[py][px]);
+						int g = (int) (c.getGreen() * kernel[py][px]);
+						int b = (int) (c.getBlue() * kernel[py][px]);
+						out.setRGB(py, px, new Color(r,g,b).getRGB());
+					}
+				}
+				
+			}
+			
+		}
+		return out;
+	}
 }

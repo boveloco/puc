@@ -91,6 +91,19 @@ public class Teste {
 		this.writeFile(this.path, out, "threshold");
 		System.out.println("Threshold -- OK");
 	}
+	private void testeKernel(String path){
+		BufferedImage img = this.loadFile(path);
+		float[][] kernel =
+		{
+			{0.0f, -1.0f, 0.0f},
+			{-1.0f, 5.0f, -1.0f},
+			{0.0f, -1.0f, 0.0f}
+		};
+		
+		BufferedImage out = this.ex.kernel(img, kernel);
+		
+		this.writeFile(this.path, out, "Kernel");
+	}
 	
 	private void testImg(){
 		this.testeAdd("img/cor/mario.jpg", "img/cor/sonic.jpg");
@@ -101,6 +114,7 @@ public class Teste {
 		this.testeLinha("img/cor/mario.jpg", 200, 100, 150, 300);
 		this.testeSubtract("img/pb/errosB1.png", "img/pb/errosB2.png");
 		this.testeThreshold("img/cor/mario.jpg", 255);
+		this.testeKernel("img/cor/metroid1.jpg");
 		
 	}
 	public static void main(String[] args) {
