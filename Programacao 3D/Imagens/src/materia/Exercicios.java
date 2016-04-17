@@ -184,85 +184,83 @@ public class Exercicios {
 		BufferedImage out = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
 		// equacao da reta
 		double m;
-		if ((x2 - x1) == 0) {
-			m = 0;
-		} else {
-			m = (((double) y2 - y1) / (x2 - x1));
-			System.out.println(m);
-		}
-		System.out.println("x2-x1 " + x2 + " " + x1);
-		System.out.println("y2-y1 " + y2 + " " + y1);
-		System.out.println("m = " + m);
-		double m1 = 0;
-		// TODO: if para m > abs(0) m < abs(0)
-		// caso m > 0 desenhar por x else desenhar por y'
-		if (x2 > x1) {
-			for (int i = x2; i <= x1; i++) {
-				m1 += m;
-				out.setRGB(i, (int) (y1 + m1), color.getRGB());
+
+		double dx = x2 - x1;
+		double dy = y2 - y1;
+		m = dy / dx;
+		if (Math.abs(m) <= 1.0) {
+			if (x1 > x2) {
+				linha(img, x2, y2, x1, y1, color);
+			}
+			float y = y1;
+			for (int i = x1; i < x2; i++) {
+				out.setRGB(i, (int) y, color.getRGB());
+				y +=m;
 			}
 		} else {
-			for (int i = x1; i <= x2; i++) {
-				m1 += m;
-				out.setRGB(i, (int) (y2 + m1), color.getRGB());
+			if(y1 > y2){
+				linha(img, x2,y2,x1,y1, color);
 			}
+			double  my = 1.0f / m;
+			double x = x1;
+			for (int y = y1; y <= y2; y++) {
+				out.setRGB((int)x, y, color.getRGB());
+				x += my;
+			}	
 		}
+
 		return out;
 	}
 
-	
-	//exemplo EGA com verigicacao
-	public int getValueColorEGBA(int c){
+	// exemplo EGA com verigicacao
+	public int getValueColorEGBA(int c) {
 		switch (c / 64) {
 		case 0:
-			if(c % 64 > 5){
-				return 1*64;
+			if (c % 64 > 5) {
+				return 1 * 64;
 			}
 			return 0;
 		case 1:
-			if(c % 64 > 5){
-				return 2*64;
+			if (c % 64 > 5) {
+				return 2 * 64;
 			}
-			return 1*64;
+			return 1 * 64;
 		case 2:
-			if(c % 64 > 5){
-				return 3*64;
+			if (c % 64 > 5) {
+				return 3 * 64;
 			}
-			return 2*64;
+			return 2 * 64;
 		case 3:
-			if(c % 64 > 5){
-				return 4*64;
+			if (c % 64 > 5) {
+				return 4 * 64;
 			}
-			return 3*64;
+			return 3 * 64;
 		default:
 			break;
 		}
 		return 0;
 	}
-	
-	public BufferedImage kernel(BufferedImage img, float[][] kernel){
+
+	public BufferedImage kernel(BufferedImage img, float[][] kernel) {
 		BufferedImage out = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
 		for (int i = 0; i < img.getWidth(); i++) {
 			for (int j = 0; j < img.getHeight(); j++) {
-				
-				
+
 				for (int jx = 0; jx < 3; jx++) {
 					for (int jy = 0; jy < 3; jy++) {
-						int px = j + jx -1;
-						int py = i + jy -1;
-						if(px < 0 || px >= img.getWidth() || py < 0 || py>=img.getWidth())
+						int px = j + jx - 1;
+						int py = i + jy - 1;
+						if (px < 0 || px >= img.getWidth() || py < 0 || py >= img.getWidth())
 							continue;
-						
+
 						Color c = new Color(img.getRGB(py, px));
 						int r = (int) (c.getRed() * kernel[py][px]);
 						int g = (int) (c.getGreen() * kernel[py][px]);
 						int b = (int) (c.getBlue() * kernel[py][px]);
-						out.setRGB(py, px, new Color(r,g,b).getRGB());
+						out.setRGB(py, px, new Color(r, g, b).getRGB());
 					}
 				}
-				
 			}
-			
 		}
 		return out;
 	}
