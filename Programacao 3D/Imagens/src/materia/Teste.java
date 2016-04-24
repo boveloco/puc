@@ -33,7 +33,7 @@ public class Teste {
 
 	private boolean writeFile(String path, BufferedImage out, String name) {
 		try {
-			ImageIO.write(out, "png", new File(path + name));
+			ImageIO.write(out, "png", new File(path + name + ".png"));
 			System.out.println(path + name + ".png");
 			return true;
 		} catch (IOException e) {
@@ -116,7 +116,9 @@ public class Teste {
 
 	private void testeKernel(String path) {
 		BufferedImage img = this.loadFile(path);
-		float[][] kernel = { { 0.0f, -1.0f, 0.0f }, { -1.0f, 2.0f, -1.0f }, { 0.0f, -1.0f, 0.0f } };
+		float[][] kernel = { { -2.0f, -1.0f, 0.0f },
+							 { -1.0f, 1.0f, 1.0f }, 
+							 { 0.0f, 1.0f, 2.0f } };
 		BufferedImage out = this.ex.kernel(img, kernel);
 
 		this.writeFile(this.path, out, "Kernel");
@@ -159,8 +161,8 @@ public class Teste {
 		// this.testeThreshold("img/cor/mario.jpg", 255);
 //		this.testeKernel("img/cor/metroid1.jpg");
 //		this.testeRemoveBlue("img/cabeca/1020.png");
-		this.removeAllBlue(new File("img/cabeca/"));
-		this.testCropAll(new File("img/final/"));
+//		this.removeAllBlue(new File("img/cabeca/"));
+//		this.testCropAll(new File("img/final"));
 //		this.testCrop("img/final/1020.png");
 
 	}

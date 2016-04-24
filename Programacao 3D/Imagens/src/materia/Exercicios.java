@@ -245,21 +245,30 @@ public class Exercicios {
 		BufferedImage out = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
 		for (int i = 0; i < img.getWidth(); i++) {
 			for (int j = 0; j < img.getHeight(); j++) {
-
-				for (int jx = 0; jx < 3; jx++) {
-					for (int jy = 0; jy < 3; jy++) {
-						int px = j + jx - 1;
-						int py = i + jy - 1;
+				float r = 0;
+				float g = 0;
+				float b = 0;
+				for (int jx = 0; jx < 2; jx++) {
+					for (int jy = 0; jy < 2; jy++) {
+						int px = j + jx;
+						int py = i + jy;
 						if (px < 0 || px >= img.getWidth() || py < 0 || py >= img.getWidth())
 							continue;
 
-						Color c = new Color(img.getRGB(py, px));
-						int r = (int) (c.getRed() * kernel[py][px]);
-						int g = (int) (c.getGreen() * kernel[py][px]);
-						int b = (int) (c.getBlue() * kernel[py][px]);
-						out.setRGB(py, px, new Color(r, g, b).getRGB());
+						Color c = new Color(img.getRGB(i, j));
+						r += (c.getRed() * kernel[jx][jy]);
+						g += (c.getGreen() * kernel[jx][jy]);
+						b += (c.getBlue() * kernel[jx][jy]);
+						
 					}
 				}
+				r = r > 255 ? 255:r;
+				r = r < 0 ? 0 : r;
+				g = g > 255 ? 255:g;
+				g = g < 0 ? 0 : g;
+				b = b > 255 ? 255:b;
+				b = b < 0 ? 0 : b;
+				out.setRGB(i, j, new Color((int)r, (int)g, (int)b).getRGB());
 			}
 		}
 		return out;
