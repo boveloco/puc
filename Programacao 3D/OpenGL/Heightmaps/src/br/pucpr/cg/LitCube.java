@@ -28,7 +28,6 @@ import br.pucpr.mage.Scene;
 import br.pucpr.mage.Shader;
 import br.pucpr.mage.Window;
 
-
 public class LitCube implements Scene {
 			
 	private Keyboard keys = Keyboard.getInstance();
