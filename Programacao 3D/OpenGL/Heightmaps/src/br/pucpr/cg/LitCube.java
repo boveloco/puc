@@ -28,8 +28,10 @@ import br.pucpr.mage.Scene;
 import br.pucpr.mage.Shader;
 import br.pucpr.mage.Window;
 
+
 public class LitCube implements Scene {
-    private Keyboard keys = Keyboard.getInstance();
+			
+	private Keyboard keys = Keyboard.getInstance();
     
     private Mesh mesh;
     private float angleX = 0.0f;
@@ -43,7 +45,7 @@ public class LitCube implements Scene {
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
         try {
-			mesh = MeshFactory.loadTerrain(new File("C:/temp/terrain/jorge.jpg"), 0.4f);
+			mesh = MeshFactory.loadTerrain(new File(Files.HEIGHTMAP_IMAGE_PATH), 0.4f);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
