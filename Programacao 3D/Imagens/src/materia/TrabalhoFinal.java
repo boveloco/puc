@@ -4,7 +4,16 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.nio.Buffer;
 
+import javax.imageio.metadata.IIOInvalidTreeException;
+
 public class TrabalhoFinal {
+	
+	private Exercicios ex;
+	
+	public TrabalhoFinal() {
+		this.ex = new Exercicios();
+	}
+	
 	public BufferedImage removeBlue(BufferedImage img) {
 		BufferedImage out = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
 		for (int i = 0; i < img.getHeight(); i++) {
@@ -18,6 +27,36 @@ public class TrabalhoFinal {
 					g = 0;
 					b = 0;
 				}
+				
+				for (int k = 0; k < 4; k++) {
+					int cont = 0;
+					if(j+k >= img.getWidth())
+						continue;
+					Color c1 = new Color(img.getRGB(j+k,i));
+					int r1 = c1.getRed();
+					int g1 = c1.getGreen();
+					int b1 = c1.getBlue();
+					
+					if (r1 < 25)
+						cont++;
+					if (g1 < 25)
+						cont++;
+					if (b1 < 25)
+						cont++;
+					
+					if(cont >= 1){
+						r = 0;
+						g = 0;
+						b = 0;
+					}
+						
+				}
+//				if(r < 35 && g < 50 && b < 40){ //treshold pra tirar os pontinhos
+//					r = 0;
+//					g = 0;
+//					b = 0;
+//				}
+					
 				Color c1 = new Color(r, g, b);
 				// System.out.println(c1.getRed());
 				out.setRGB(j, i, c1.getRGB());
@@ -39,8 +78,8 @@ public class TrabalhoFinal {
 				int g = c.getGreen();
 				int b = c.getBlue();
 				
-				if (r > 20 || g > 20 || b > 20) {
-					System.out.println(" r " + r + " g " + g + " b " + b + " i " + i + " j " + j);
+				if (b > 30 && g > 30  && r > 30 ) {
+					//System.out.println(" r " + r + " g " + g + " b " + b + " i " + i + " j " + j);
 					// System.out.println(j + " j");
 					// System.out.println(iInicial + "iInicial");
 					// System.out.println(jInicial + "jInicial");
@@ -50,7 +89,7 @@ public class TrabalhoFinal {
 						iInicial = i;
 					if (jInicial > j)
 						jInicial = j;
-					if (i < img.getHeight() / 10 * 7.5) {
+					if (i < img.getHeight() / 10 * 7.0f) {
 						if (iFinal < i)
 							iFinal = i;
 						if (jFinal < j)
@@ -63,17 +102,19 @@ public class TrabalhoFinal {
 		// jInicial = jInicial - 30;
 		// iFinal = iFinal + 40;
 		// jFinal = jFinal + 40;
-		BufferedImage out2 = new BufferedImage(jFinal - jInicial, iFinal - iInicial, img.getType());
-		for (int i = iInicial; i < iFinal; i++) {
-			for (int j = jInicial; j < jFinal; j++) {
-				Color c = new Color(img.getRGB(j, i));
+		BufferedImage out2 = new BufferedImage((jFinal - jInicial), (iFinal - iInicial), img.getType());
+		int im = iFinal - iInicial;
+		int jm = jFinal - jInicial;
+		for (int i = 0; i < im; i++) {
+			for (int j = 0; j < jm ;j++) {
+				Color c = new Color(img.getRGB(j + jInicial, i + iInicial));
 				int r = c.getRed();
 				int g = c.getGreen();
 				int b = c.getBlue();
 				out2.setRGB(j, i, new Color(r, g, b).getRGB());
 			}
 		}
-		return out;
+		return out2;
 	}
 
 }

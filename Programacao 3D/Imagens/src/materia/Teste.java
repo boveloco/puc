@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
 
 import javax.imageio.ImageIO;
 import materia.TrabalhoFinal;
@@ -116,30 +117,39 @@ public class Teste {
 
 	private void testeKernel(String path) {
 		BufferedImage img = this.loadFile(path);
-		float[][] kernel = { { -2.0f, -1.0f, 0.0f },
-							 { -1.0f, 1.0f, 1.0f }, 
-							 { 0.0f, 1.0f, 2.0f } };
+		float[][] kernel = { { 0.0625f, 0.125f, 0.0625f },
+							 { 0.125f, 0.25f, 0.125f }, 
+							 { 0.0625f, 0.125f, 0.0625f } };
 		BufferedImage out = this.ex.kernel(img, kernel);
 
 		this.writeFile(this.path, out, "Kernel");
 	}
 
-	private BufferedImage testeRemoveBlue(String path) {
-		BufferedImage img = this.loadFile(path);
-		return tf.removeBlue(img);
+	private void testeRemoveBlue(String path) {
+		this.writeFile(this.pathFinal, this.tf.removeBlue(this.loadFile(path)) , "blue");
+	}
+	
+	private BufferedImage testeRemoveBlue(BufferedImage img){
+		return this.tf.removeBlue(img);
 	}
 
 	private void removeAllBlue(final File folder){
 
     for (final File fileEntry : folder.listFiles()) {
         if (!fileEntry.isDirectory()) {
-            this.writeFileNoExtension(this.pathFinal,this.testeRemoveBlue(fileEntry.getAbsolutePath()),fileEntry.getName());
+        	
+            this.writeFileNoExtension(this.pathFinal, this.tf.removeBlue(this.loadFile(fileEntry.getAbsolutePath())),fileEntry.getName());
         }
     }
 }
 	private BufferedImage testCrop(String path){
 		BufferedImage img = this.loadFile(path);
 		return tf.crop(img);
+	}
+	
+	private void testCrop(BufferedImage img){
+		BufferedImage img2 = this.tf.crop(img);
+		this.writeFile(pathFinal, img2, "crop");
 	}
 	
 	private void testCropAll(final File folder){
@@ -159,12 +169,12 @@ public class Teste {
 		// this.testeLinha("img/cor/mario.jpg", 0, 0, 300, 300);
 		// this.testeSubtract("img/pb/errosB1.png", "img/pb/errosB2.png");
 		// this.testeThreshold("img/cor/mario.jpg", 255);
-//		this.testeKernel("img/cor/metroid1.jpg");
-//		this.testeRemoveBlue("img/cabeca/1020.png");
-//		this.removeAllBlue(new File("img/cabeca/"));
-//		this.testCropAll(new File("img/final"));
+//		this.testeKernel("img/cor/puppy.png");
+//		this.testeRemoveBlue("img/cabeca/1320.png");
+//		this.testCrop(this.testeRemoveBlue(this.loadFile("img/cabeca/1320.png")));
+		this.removeAllBlue(new File("img/cabeca/"));
+		this.testCropAll(new File("img/final"));
 //		this.testCrop("img/final/1020.png");
-
 	}
 
 	public static void main(String[] args) {

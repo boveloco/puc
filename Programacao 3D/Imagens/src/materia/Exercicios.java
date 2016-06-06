@@ -195,18 +195,18 @@ public class Exercicios {
 			float y = y1;
 			for (int i = x1; i < x2; i++) {
 				out.setRGB(i, (int) y, color.getRGB());
-				y +=m;
+				y += m;
 			}
 		} else {
-			if(y1 > y2){
-				linha(img, x2,y2,x1,y1, color);
+			if (y1 > y2) {
+				linha(img, x2, y2, x1, y1, color);
 			}
-			double  my = 1.0f / m;
+			double my = 1.0f / m;
 			double x = x1;
 			for (int y = y1; y <= y2; y++) {
-				out.setRGB((int)x, y, color.getRGB());
+				out.setRGB((int) x, y, color.getRGB());
 				x += my;
-			}	
+			}
 		}
 
 		return out;
@@ -243,32 +243,38 @@ public class Exercicios {
 
 	public BufferedImage kernel(BufferedImage img, float[][] kernel) {
 		BufferedImage out = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
-		for (int i = 0; i < img.getWidth(); i++) {
-			for (int j = 0; j < img.getHeight(); j++) {
+		for (int i = 1; i < img.getWidth(); i++) {
+			for (int j = 1; j < img.getHeight(); j++) {
 				float r = 0;
 				float g = 0;
 				float b = 0;
-				for (int jx = 0; jx < 2; jx++) {
-					for (int jy = 0; jy < 2; jy++) {
-						int px = j + jx;
-						int py = i + jy;
-						if (px < 0 || px >= img.getWidth() || py < 0 || py >= img.getWidth())
+				for (int k = 0; k < kernel.length; k++) {
+					for (int k2 = 0; k2 < kernel.length; k2++) { // ASSUMINDO
+																	// QUE O
+																	// KERNEL É
+																	// SEMPRE
+																	// QUADRADO
+						int n = i - (int) kernel.length/2;
+						int m = j - (int) kernel.length/2;
+						if (n < 0 || n >= img.getWidth() || m < 0 || m >= img.getWidth())
 							continue;
-
-						Color c = new Color(img.getRGB(i, j));
-						r += (c.getRed() * kernel[jx][jy]);
-						g += (c.getGreen() * kernel[jx][jy]);
-						b += (c.getBlue() * kernel[jx][jy]);
 						
+						Color c = new Color(img.getRGB(n, m));
+						r += (c.getRed() * kernel[k][k2]);
+						g += (c.getGreen() * kernel[k][k2]);
+						b += (c.getBlue() * kernel[k][k2]);
+						n++;
+						m++;
 					}
 				}
-				r = r > 255 ? 255:r;
+				r = r > 255 ? 255 : r;
 				r = r < 0 ? 0 : r;
-				g = g > 255 ? 255:g;
+				g = g > 255 ? 255 : g;
 				g = g < 0 ? 0 : g;
-				b = b > 255 ? 255:b;
+				b = b > 255 ? 255 : b;
 				b = b < 0 ? 0 : b;
-				out.setRGB(i, j, new Color((int)r, (int)g, (int)b).getRGB());
+				
+				out.setRGB(i, j, new Color((int) r, (int) g, (int) b).getRGB());
 			}
 		}
 		return out;
