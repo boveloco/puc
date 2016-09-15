@@ -22,7 +22,7 @@ import br.pucpr.mage.phong.SkydomeMaterial;
 import br.pucpr.mage.postfx.PostFXMaterial;
 
 public class Skydome implements Scene {
-	private static final String PATH = "img/opengl/";
+	private static final String PATH = "../img/opengl/";
 
 	private float dTime = 0.0f;
 	

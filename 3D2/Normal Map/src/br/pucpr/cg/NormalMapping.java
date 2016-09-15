@@ -18,7 +18,7 @@ import br.pucpr.mage.phong.NormalMapMaterial;
 import br.pucpr.mage.phong.PhongMaterial;
 
 public class NormalMapping implements Scene {
-    private static final String PATH = "img/opengl/";
+    private static final String PATH = "../img/opengl/";
     
     private Keyboard keys = Keyboard.getInstance();
     private boolean normals = false;
