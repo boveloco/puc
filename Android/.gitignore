@@ -1,4 +1,15 @@
 
+#AndroidStudio
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
 # Created by https://www.gitignore.io/api/android
 
 ### Android ###
