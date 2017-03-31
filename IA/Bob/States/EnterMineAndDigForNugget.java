@@ -3,6 +3,7 @@ package States;
 import java.util.Random;
 
 import Omega.Bob;
+import Omega.Player;
 
 public class EnterMineAndDigForNugget implements State<Bob> {
 
@@ -15,7 +16,7 @@ public class EnterMineAndDigForNugget implements State<Bob> {
 	}
 
 	@Override
-	public void enter(Bob b) {
+	public void enter(Player<Bob> b) {
 		System.out.println("--------------------------------------------");
 		System.out.println("Mining... Mining... Miningg...");
 		flagGold = false;
@@ -29,24 +30,24 @@ public class EnterMineAndDigForNugget implements State<Bob> {
 	}
 
 	@Override
-	public void execute(Bob b) {
-		b.addFatigue(r.nextInt(10));
-		b.addThirsty(r.nextInt(5));
+	public void execute(Player<Bob> b) {
+		((Bob) b).addFatigue(r.nextInt(10));
+		((Bob) b).addThirsty(r.nextInt(5));
 		int res = r.nextInt(4);
 		if (res == 2) {
-			b.addNugets(1);
+			((Bob) b).addNugets(1);
 			this.flagGold = true;
 		}
 
-		if (b.isThirsty()) {
+		if (((Bob) b).isThirsty()) {
 			b.changeState(new QuenchThirst());
 		}
 
-		if (b.isTired()) {
+		if (((Bob) b).isTired()) {
 			b.changeState(new GoHomeAndSleepTillRested());
 		}
 
-		if (b.getNugets() >= Bob.GOLDLIMIT) {
+		if (((Bob) b).getNugets() >= Bob.GOLDLIMIT) {
 			b.changeState(new VisitBankAndDepositGold());
 		}
 		if (flagGold) {
@@ -66,12 +67,12 @@ public class EnterMineAndDigForNugget implements State<Bob> {
 	}
 
 	@Override
-	public void exit(Bob b) {
+	public void exit(Player<Bob> b) {
 		System.out.println("-----------------------");
 		System.out.println("Status:");
-		System.out.println(b.getFatigue());
-		System.out.println(b.getThirsty());
-		System.out.println(b.getGold());
+		System.out.println(((Bob) b).getFatigue());
+		System.out.println(((Bob) b).getThirsty());
+		System.out.println(((Bob) b).getGold());
 		System.out.println("------------------------");
 		try {
 			Thread.currentThread();

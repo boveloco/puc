@@ -2,23 +2,17 @@ package Omega;
 
 import States.State;
 
-public class Bob{
+public class Bob extends Players<Bob>{
 
-	private int nugets = 0, gold = 0, fatigue = 0, thirsty = 0, dailyGold = 0;
-	public static final int GOLDLIMIT = 35, THIRSTLIMIT = 450, TIREDLIMIT = 1220;
-
-	private State<Bob> state;
+	private int nugets = 0, gold = 0, fatigue = 0, dailyGold = 0;
+	public static final int GOLDLIMIT = 35, TIREDLIMIT = 1220;
 
 	public Bob(State<Bob> s) {
 		this.state = s;
 
 		this.state.enter(this);
 	}
-
-	public void update() {
-		this.state.execute(this);
-	}
-
+	
 	public void addNugets(int n) {
 		this.nugets += n;
 	}
@@ -31,10 +25,6 @@ public class Bob{
 		this.fatigue += n;
 	}
 
-	public void addThirsty(int n) {
-		this.thirsty += n;
-	}
-
 	public void addDailyGold(int n) {
 		this.dailyGold += n;
 	}
@@ -43,20 +33,6 @@ public class Bob{
 		if (this.fatigue >= TIREDLIMIT)
 			return true;
 		return false;
-	}
-
-	public boolean isThirsty() {
-		if (this.thirsty >= THIRSTLIMIT)
-			return true;
-		return false;
-	}
-
-	public void changeState(State<Bob> state) {
-		this.state.exit(this);
-
-		this.state = state;
-
-		this.state.enter(this);
 	}
 
 	public int getNugets() {
@@ -71,10 +47,6 @@ public class Bob{
 		return fatigue;
 	}
 
-	public int getThirsty() {
-		return thirsty;
-	}
-
 	public int getDailyGold() {
 		return dailyGold;
 	}
@@ -82,5 +54,6 @@ public class Bob{
 	public State<Bob> getState() {
 		return state;
 	}
+
 
 }

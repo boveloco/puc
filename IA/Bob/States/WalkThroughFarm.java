@@ -3,6 +3,7 @@ package States;
 import java.util.Random;
 
 import Omega.Billi;
+import Omega.Player;
 
 public class WalkThroughFarm implements State<Billi> {
 
@@ -23,21 +24,21 @@ public class WalkThroughFarm implements State<Billi> {
 
 
 	@Override
-	public void enter(Billi t) {
+	public void enter(Player<Billi> t) {
 		
 	}
 
 	@Override
-	public void execute(Billi t) {
+	public void execute(Player<Billi> t) {
 		System.out.println("EEE vortinha boosta, prefiro olhar para o tempo");
 		if(r.nextInt(4)>0){
-			t.changState(LookAtWeather.getInstance());
+			((Billi) t).changeState(LookAtWeather.getInstance());
 		}
 
 	}
 
 	@Override
-	public void exit(Billi t) {
+	public void exit(Player<Billi> t) {
 		try {
 			Thread.currentThread();
 			Thread.sleep(1000);

@@ -3,6 +3,7 @@ package States;
 import java.util.Random;
 
 import Omega.Billi;
+import Omega.Player;
 
 public class LookAtWeather implements State<Billi> {
 
@@ -21,13 +22,13 @@ public class LookAtWeather implements State<Billi> {
 	} 
 	
 	@Override
-	public void enter(Billi t) {
+	public void enter(Player<Billi> t) {
 		System.out.println("Acho que vou dar uma olhada no tempo");
 		
 	}
 
 	@Override
-	public void execute(Billi t) {
+	public void execute(Player<Billi> t) {
 		if(r.nextBoolean()){
 			System.out.println("Ceu ta limpo, eu ahco!");
 		} else {
@@ -35,13 +36,13 @@ public class LookAtWeather implements State<Billi> {
 		}
 		
 		if(r.nextInt(4) == 3) {
-			t.changState(WalkThroughFarm.getInstance());
+			((Billi) t).changeState(WalkThroughFarm.getInstance());
 		}
 		
 	}
 
 	@Override
-	public void exit(Billi t) {
+	public void exit(Player<Billi> t) {
 		System.out.println("Vou dar umas vorta.");
 		try {
 			Thread.currentThread();

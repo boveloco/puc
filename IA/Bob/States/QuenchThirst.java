@@ -3,6 +3,7 @@ package States;
 import java.util.Random;
 
 import Omega.Bob;
+import Omega.Player;
 
 public class QuenchThirst implements State<Bob> {
 
@@ -13,28 +14,28 @@ public class QuenchThirst implements State<Bob> {
 	}
 
 	@Override
-	public void enter(Bob b) {
+	public void enter(Player<Bob> b) {
 		System.out.println("-----------------------------------");
 		System.out.println("Acho que preciso de umas birita!");
 
 	}
 
 	@Override
-	public void execute(Bob b) {
-		if (b.getThirsty() > 10) {
+	public void execute(Player<Bob> b) {
+		if (((Bob) b).getThirsty() > 10) {
 			int res = r.nextInt(7);
 			if (res == 7)
-				System.out.println("DESCE AQUELA VODKAZINHA COM RUM DO HÍMALAIA!");
-			b.addThirsty(-res);
+				System.out.println("DESCE AQUELA VODKAZINHA COM RUM DO Hï¿½MALAIA!");
+			((Bob) b).addThirsty(-res);
 		}
 
-		if (b.getThirsty() <= 10)
+		if (((Bob) b).getThirsty() <= 10)
 			b.changeState(new EnterMineAndDigForNugget());
 
 	}
 
 	@Override
-	public void exit(Bob b) {
+	public void exit(Player<Bob> b) {
 		try {
 			Thread.currentThread();
 			Thread.sleep(1000);

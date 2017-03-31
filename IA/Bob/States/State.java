@@ -1,12 +1,12 @@
 package States;
 
-import Omega.Bob;
+import Omega.Player;
 
 public interface State<T> {
 	
-	public void enter(T t);
+	public void enter(Player<T> t);
 	
-	public void execute(T t);
+	public void execute(Player<T> t);
 	
-	public void exit(T t);
+	public void exit(Player<T> t);
 }

@@ -3,6 +3,7 @@ package States;
 import java.util.Random;
 
 import Omega.Bob;
+import Omega.Player;
 
 public class VisitBankAndDepositGold implements State<Bob> {
 
@@ -13,14 +14,14 @@ public class VisitBankAndDepositGold implements State<Bob> {
 	}
 
 	@Override
-	public void enter(Bob b) {
+	public void enter(Player<Bob> b) {
 		System.out.println("---------------------------------");
 		System.out.println("Meus bolsos deveriam ser maiores.");
 	}
 
 	@Override
-	public void execute(Bob b) {
-		if (b.getNugets() >= 10) {
+	public void execute(Player<Bob> b) {
+		if (((Bob) b).getNugets() >= 10) {
 			this.changeGold(b, 10);
 		} else {
 			b.changeState(new EnterMineAndDigForNugget());
@@ -29,28 +30,28 @@ public class VisitBankAndDepositGold implements State<Bob> {
 	}
 
 	@Override
-	public void exit(Bob b) {
+	public void exit(Player<Bob> b) {
 		System.out.println("E a bufunfa aumeeeeenta. :D");
-		System.out.println("To com " + b.getGold() + " na busanfa!");
+		System.out.println("To com " + ((Bob) b).getGold() + " na busanfa!");
 
 		if (r.nextInt(30) == 20) {
-			int roubado = r.nextInt(b.getGold());
+			int roubado = r.nextInt(((Bob) b).getGold());
 			System.out.println("PUTA MERDA, ESSE FILHA DA MAE ME ROUBOU TUDO.. TAQUELAMERDA");
 			System.out.println("Roubado: " + roubado);
 		}
 
 	}
 
-	private void changeGold(Bob b, int n) {
-		b.addGold(n);
+	private void changeGold(Player<Bob> b, int n) {
+		((Bob) b).addGold(n);
 		if(r.nextInt(9) == 1) {
-			b.addNugets(-n);
-			b.addGold(2);
-			System.out.println("Opa, gostei do banqueiro, ele me deu um gold a mais. Vou convidar ele pro meu velório..");
+			((Bob) b).addNugets(-n);
+			((Bob) b).addGold(2);
+			System.out.println("Opa, gostei do banqueiro, ele me deu um gold a mais. Vou convidar ele pro meu velï¿½rio..");
 		} else {
-			b.addNugets(-n);
-			b.addGold(1);
-			System.out.println("A cada dia que passa acho que esse banqueiro está me roubando mais e mais.");			
+			((Bob) b).addNugets(-n);
+			((Bob) b).addGold(1);
+			System.out.println("A cada dia que passa acho que esse banqueiro estï¿½ me roubando mais e mais.");			
 		}
 			
 		try {

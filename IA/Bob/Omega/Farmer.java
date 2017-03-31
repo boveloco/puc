@@ -10,7 +10,7 @@ public class Farmer {
 
 	private void enterMineAndDigForNugget() {
 		System.out.println("--------------------------------------------");
-		System.out.println("Gold: " + gold + " Sede: " + thirst + " Cansaço: " + tired);
+		System.out.println("Gold: " + gold + " Sede: " + thirst + " Cansaï¿½o: " + tired);
 		System.out.println("Fazendo gold");
 		while ((thirst < thirstLimit) || (tired < tiredLimit) || (gold < goldLimit)) {
 			tired += r.nextInt(10);
@@ -24,12 +24,12 @@ public class Farmer {
 		wealth += gold;
 		System.out.println("Depositado: " + gold + " Gold Total: " + wealth);
 		gold = 0;
-		System.out.println(" Sede: " + thirst + " Cansaço: " + tired);
+		System.out.println(" Sede: " + thirst + " Cansaï¿½o: " + tired);
 	}
 
 	private void goHomeAndSleepTillRested() {
 		System.out.println("Descansando e recupenrando sede");
-		System.out.println("Gold: " + gold + " Sede: " + thirst + " Cansaço: " + tired);
+		System.out.println("Gold: " + gold + " Sede: " + thirst + " Cansaï¿½o: " + tired);
 		tired = 0;
 		thirst = 0;
 		wealth -= r.nextInt(38);
@@ -41,7 +41,7 @@ public class Farmer {
 	private void quenchThirst() {
 		System.out.println("--------------------------------------------");
 		System.out.println("Tomando umas bera!");
-		System.out.println("Gold: " + gold + " Sede: " + thirst + " Cansaço: " + tired);
+		System.out.println("Gold: " + gold + " Sede: " + thirst + " Cansaï¿½o: " + tired);
 		thirst = 0;
 		wealth -= r.nextInt(15);
 		System.out.println("Sede: " + thirst);
@@ -51,7 +51,7 @@ public class Farmer {
 	public static void main(String[] args) {
 		Farmer f = new Farmer();
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Bora lá Bob!!!");
+		System.out.println("Bora lï¿½ Bob!!!");
 		while (true) {
 			if (f.thirst < f.thirstLimit && f.gold < f.goldLimit && f.tired < f.tiredLimit) {
 				f.enterMineAndDigForNugget();
