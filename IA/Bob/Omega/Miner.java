@@ -13,7 +13,7 @@ public class Miner {
 	public static void main(String[] args) {
 		Miner m = new Miner();
 		while(true){
-			m.b.Update();			
+			m.b.update();			
 		}
 	}
 }

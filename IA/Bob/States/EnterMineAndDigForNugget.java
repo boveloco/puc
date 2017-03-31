@@ -4,7 +4,7 @@ import java.util.Random;
 
 import Omega.Bob;
 
-public class EnterMineAndDigForNugget implements State {
+public class EnterMineAndDigForNugget implements State<Bob> {
 
 	Random r;
 	private boolean flagGold;

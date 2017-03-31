@@ -4,7 +4,7 @@ import java.util.Random;
 
 import Omega.Bob;
 
-public class GoHomeAndSleepTillRested implements State {
+public class GoHomeAndSleepTillRested implements State<Bob> {
 
 	Random r;
 

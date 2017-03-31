@@ -2,20 +2,20 @@ package Omega;
 
 import States.State;
 
-public class Bob {
+public class Bob{
 
 	private int nugets = 0, gold = 0, fatigue = 0, thirsty = 0, dailyGold = 0;
 	public static final int GOLDLIMIT = 35, THIRSTLIMIT = 450, TIREDLIMIT = 1220;
 
-	private State state;
+	private State<Bob> state;
 
-	public Bob(State s) {
+	public Bob(State<Bob> s) {
 		this.state = s;
 
 		this.state.enter(this);
 	}
 
-	public void Update() {
+	public void update() {
 		this.state.execute(this);
 	}
 
@@ -51,7 +51,7 @@ public class Bob {
 		return false;
 	}
 
-	public void changeState(State state) {
+	public void changeState(State<Bob> state) {
 		this.state.exit(this);
 
 		this.state = state;
@@ -79,7 +79,7 @@ public class Bob {
 		return dailyGold;
 	}
 
-	public State getState() {
+	public State<Bob> getState() {
 		return state;
 	}
 

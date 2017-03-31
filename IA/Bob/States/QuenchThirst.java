@@ -4,7 +4,7 @@ import java.util.Random;
 
 import Omega.Bob;
 
-public class QuenchThirst implements State {
+public class QuenchThirst implements State<Bob> {
 
 	Random r;
 

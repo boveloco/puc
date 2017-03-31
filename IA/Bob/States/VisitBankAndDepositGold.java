@@ -4,7 +4,7 @@ import java.util.Random;
 
 import Omega.Bob;
 
-public class VisitBankAndDepositGold implements State {
+public class VisitBankAndDepositGold implements State<Bob> {
 
 	Random r;
 
