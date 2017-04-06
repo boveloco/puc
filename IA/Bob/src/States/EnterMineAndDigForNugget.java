@@ -5,10 +5,13 @@ import java.util.Random;
 import Omega.Bob;
 import Omega.Player;
 
-public class EnterMineAndDigForNugget implements State<Bob> {
+public class EnterMineAndDigForNugget extends AbstractState<Bob> {
+
+	public static State<Bob> instance;
 
 	Random r;
 	private boolean flagGold;
+
 
 	public EnterMineAndDigForNugget() {
 		r = new Random();
@@ -29,26 +32,37 @@ public class EnterMineAndDigForNugget implements State<Bob> {
 		}
 	}
 
+	public static State<Bob> getInstance() {
+		if (instance == null) {
+			instance = new EnterMineAndDigForNugget();
+		}
+		return instance;
+	}
+
 	@Override
 	public void execute(Player<Bob> b) {
-		((Bob) b).addFatigue(r.nextInt(10));
-		((Bob) b).addThirsty(r.nextInt(5));
+		if(!(b instanceof Bob)){
+		    System.out.println("Erro Verificar bob");
+		    return;
+		}
+		((Bob)b).addFatigue(r.nextInt(10));
+		((Bob)b).addThirsty(r.nextInt(5));
 		int res = r.nextInt(4);
 		if (res == 2) {
 			((Bob) b).addNugets(1);
 			this.flagGold = true;
 		}
 
-		if (((Bob) b).isThirsty()) {
-			b.changeState(new QuenchThirst());
+		if (((Bob)b).isThirsty()) {
+			b.getManager().changeState(QuenchThirst.getInstance());
 		}
 
-		if (((Bob) b).isTired()) {
-			b.changeState(new GoHomeAndSleepTillRested());
+		if ( ((Bob)b).isTired()) {
+			b.getManager().changeState(GoHomeAndSleepTillRested.getInstance());
 		}
 
-		if (((Bob) b).getNugets() >= Bob.GOLDLIMIT) {
-			b.changeState(new VisitBankAndDepositGold());
+		if (((Bob)b).getNugets() >= Bob.GOLDLIMIT) {
+			b.getManager().changeState(VisitBankAndDepositGold.getInstance());
 		}
 		if (flagGold) {
 			System.out.println("AHAAAAAAAAAAAAA. :D Many many gooooooollldssss");

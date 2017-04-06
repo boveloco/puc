@@ -4,34 +4,35 @@ import States.EnterMineAndDigForNugget;
 import States.LookAtWeather;
 
 public class Miner {
-	
+
 	Bob b;
-	Billi bi;
-	
+	Billie bi;
+	public Thread bili = new Thread(){
+		@Override
+		public void run(){
+			while (true)
+				b.getManager().update();
+		}
+	};
+	public Thread bob = new Thread(){
+		@Override
+		public void run(){
+			while(true)
+				bi.getManager().update();
+		}
+	};
+
+
 	public Miner() {
 		b = new Bob(new EnterMineAndDigForNugget());
-		bi = new Billi(LookAtWeather.getInstance());
+		bi = new Billie(LookAtWeather.getInstance());
 	}
 	
 	public static void main(String[] args) {
 		Miner m = new Miner();
-		new Thread() {
-			@Override
-			public void run(){
-				while(true){
-						m.bi.update();	
-				}			
-				
-			}
-		}.start();
-		
-		new Thread() {
-			@Override
-			public void run(){
-				while(true){
-					m.b.update();
-				}
-			}
-		}.start();
+		m.bili.setName("Billi");
+		m.bob.setName("Bob");
+		m.bili.start();
+		m.bob.start();
 	}
 }

@@ -5,14 +5,21 @@ import java.util.Random;
 import Omega.Bob;
 import Omega.Player;
 
-public class QuenchThirst implements State<Bob> {
+public class QuenchThirst extends AbstractState<Bob> {
 
+	public static State<Bob> instance;
 	Random r;
 
 	public QuenchThirst() {
 		this.r = new Random();
 	}
 
+	public static State<Bob> getInstance(){
+        if(instance == null){
+            instance = new QuenchThirst();
+        }
+        return instance;
+    }
 	@Override
 	public void enter(Player<Bob> b) {
 		System.out.println("-----------------------------------");
@@ -30,7 +37,7 @@ public class QuenchThirst implements State<Bob> {
 		}
 
 		if (((Bob) b).getThirsty() <= 10)
-			b.changeState(new EnterMineAndDigForNugget());
+			b.getManager().changeState(EnterMineAndDigForNugget.getInstance());
 
 	}
 

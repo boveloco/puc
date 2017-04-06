@@ -2,47 +2,47 @@ package States;
 
 import java.util.Random;
 
-import Omega.Billi;
+import Omega.Billie;
 import Omega.Player;
 
-public class LookAtWeather implements State<Billi> {
+public class LookAtWeather extends AbstractState<Billie> {
 
 	Random r;
-	public static State<Billi> instance; 
-	
+	public static State<Billie> instance;
+
 	public LookAtWeather() {
 		r = new Random();
 	}
-	
-	public static State<Billi> getInstance(){
+
+	public static State<Billie> getInstance(){
 		if(instance == null){
 			instance = new LookAtWeather();
 		}
 		return instance;
-	} 
-	
-	@Override
-	public void enter(Player<Billi> t) {
-		System.out.println("Acho que vou dar uma olhada no tempo");
-		
 	}
 
 	@Override
-	public void execute(Player<Billi> t) {
+	public void enter(Player<Billie> t) {
+		System.out.println("Acho que vou dar uma olhada no tempo");
+
+	}
+
+	@Override
+	public void execute(Player<Billie> t) {
 		if(r.nextBoolean()){
 			System.out.println("Ceu ta limpo, eu ahco!");
 		} else {
 			System.out.println("Ceu ta uma BOSTA");
 		}
-		
+
 		if(r.nextInt(4) == 3) {
-			((Billi) t).changeState(WalkThroughFarm.getInstance());
+			t.getManager().changeState(WalkThroughFarm.getInstance());
 		}
-		
+
 	}
 
 	@Override
-	public void exit(Player<Billi> t) {
+	public void exit(Player<Billie> t) {
 		System.out.println("Vou dar umas vorta.");
 		try {
 			Thread.currentThread();
@@ -51,7 +51,7 @@ public class LookAtWeather implements State<Billi> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

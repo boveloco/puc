@@ -5,14 +5,21 @@ import java.util.Random;
 import Omega.Bob;
 import Omega.Player;
 
-public class GoHomeAndSleepTillRested implements State<Bob> {
+public class GoHomeAndSleepTillRested extends AbstractState<Bob> {
 
+	public static State<Bob> instance;
 	Random r;
+
+	public static State<Bob> getInstance(){
+		if(instance == null){
+			instance = new GoHomeAndSleepTillRested();
+		}
+		return instance;
+	}
 
 	public GoHomeAndSleepTillRested() {
 		this.r = new Random();
 	}
-
 	@Override
 	public void enter(Player<Bob> b) {
 		System.out.println("--------------------------------------------");
@@ -22,24 +29,13 @@ public class GoHomeAndSleepTillRested implements State<Bob> {
 
 	@Override
 	public void execute(Player<Bob> b) {
-		if (((Bob) b).getThirsty() >= 0)
-			((Bob) b).addThirsty(-r.nextInt(10));
-		if (((Bob) b).getFatigue() >= 0)
-			((Bob) b).addFatigue(-r.nextInt(9));
+		if (b.getThirsty() >= 0)
+			b.addThirsty(-r.nextInt(10));
+		if (((Bob)b).getFatigue() >= 0)
+			((Bob)b).addFatigue(-r.nextInt(9));
 
-		if (((Bob) b).getThirsty() <= 0 && ((Bob) b).getFatigue() <= 0) {
-			b.changeState(new EnterMineAndDigForNugget());
-		}
-	}
-
-	@Override
-	public void exit(Player<Bob> b) {
-		try {
-			Thread.currentThread();
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (b.getThirsty() <= 0 && (((Bob)b).getFatigue() <= 0)) {
+			b.getManager().changeState(EnterMineAndDigForNugget.getInstance());
 		}
 	}
 
