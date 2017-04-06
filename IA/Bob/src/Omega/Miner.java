@@ -1,6 +1,7 @@
 package Omega;
 
 import States.EnterMineAndDigForNugget;
+import States.GlobalPeeness;
 import States.LookAtWeather;
 
 public class Miner {
@@ -24,8 +25,10 @@ public class Miner {
 
 
 	public Miner() {
-		b = new Bob(new EnterMineAndDigForNugget());
+		b = new Bob(EnterMineAndDigForNugget.getInstance());
+		b.getManager().changeGlobalState(new GlobalPeeness<Bob>());
 		bi = new Billie(LookAtWeather.getInstance());
+		bi.getManager().changeGlobalState(new GlobalPeeness<Billie>());
 	}
 	
 	public static void main(String[] args) {

@@ -2,7 +2,10 @@ package States;
 
 import Omega.Player;
 
-public class AbstractState<T> implements State<T> {
+import java.util.Random;
+
+public abstract class AbstractState<T> implements State<T> {
+    protected Random r = new Random();
 
     @Override
     public void enter(Player<T> t) {

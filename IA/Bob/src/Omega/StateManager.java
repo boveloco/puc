@@ -50,6 +50,12 @@ public class StateManager<T> {
 	}
 
 	public void changeGlobalState(State<T> s){
+		if(this.globalState == null){
+			this.globalState = s;
+			this.lastGlobalState = s;
+			this.globalState.enter(p);
+			return;
+		}
 		this.lastGlobalState = globalState;
 
 		this.globalState.exit(p);;
