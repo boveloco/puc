@@ -3,7 +3,6 @@ package States;
 import java.util.Random;
 
 import Omega.Player;
-import Omega.Player;
 
 public class GoToBathroom<P> extends AbstractState<P>{
 

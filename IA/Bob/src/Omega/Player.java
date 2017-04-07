@@ -2,7 +2,6 @@ package Omega;
 
 import java.util.Random;
 
-import States.GoToBathroom;
 import States.State;
 
 public abstract class Player<T> {

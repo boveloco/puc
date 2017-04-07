@@ -2,12 +2,15 @@ package States;
 
 import Omega.Player;
 
-import java.util.Random;
-
 /**
  * Created by projecao on 06/04/17.
  */
 public class GlobalPeeness<T> extends AbstractState<T> {
+	
+	@Override
+		public void enter(Player<T> t) {
+			System.out.println("Global voltou para o peeness");
+		}
 
    @Override
     public void execute(Player<T> p){

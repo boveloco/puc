@@ -9,7 +9,7 @@ public abstract class AbstractState<T> implements State<T> {
 
     @Override
     public void enter(Player<T> t) {
-
+    	
     }
 
     @Override
