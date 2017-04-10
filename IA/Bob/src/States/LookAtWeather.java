@@ -5,16 +5,16 @@ import java.util.Random;
 import Omega.Billie;
 import Omega.Player;
 
-public class LookAtWeather extends AbstractState<Billie> {
+public class LookAtWeather extends AbstractState {
 
 	Random r;
-	public static State<Billie> instance;
+	public static State<Player> instance;
 
 	public LookAtWeather() {
 		r = new Random();
 	}
 
-	public static State<Billie> getInstance(){
+	public static State<Player> getInstance(){
 		if(instance == null){
 			instance = new LookAtWeather();
 		}
@@ -22,13 +22,13 @@ public class LookAtWeather extends AbstractState<Billie> {
 	}
 
 	@Override
-	public void enter(Player<Billie> t) {
+	public void enter(Player t) {
 		System.out.println("Acho que vou dar uma olhada no tempo");
 
 	}
 
 	@Override
-	public void execute(Player<Billie> t) {
+	public void execute(Player t) {
 		if(r.nextBoolean()){
 			System.out.println("Ceu ta limpo, eu ahco!");
 		} else {
@@ -42,7 +42,7 @@ public class LookAtWeather extends AbstractState<Billie> {
 	}
 
 	@Override
-	public void exit(Player<Billie> t) {
+	public void exit(Player t) {
 		System.out.println("Vou dar umas vorta.");
 		try {
 			Thread.currentThread();

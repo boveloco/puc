@@ -1,21 +1,30 @@
 package States;
 
 import Omega.Player;
+import States.State;
 
-/**
- * Created by projecao on 06/04/17.
- */
-public class GlobalPeeness<T> extends AbstractState<T> {
+
+public class GlobalPeeness extends AbstractState {
+
+	static State<Player> instance;
+
 	
+	public static State<Player> getInstance() {
+		if(instance == null){
+			instance = new GlobalPeeness();
+		}
+		return instance;
+	}
+
 	@Override
-		public void enter(Player<T> t) {
+		public void enter(Player t) {
 			System.out.println("Global voltou para o peeness");
 		}
 
    @Override
-    public void execute(Player<T> p){
+    public void execute(Player p){
         if(r.nextInt(100) == 0){
-            p.getManager().changeState(new GoToBathroom<T>());
+            p.getManager().changeState(new GoToBathroom());
         }
    }
 }

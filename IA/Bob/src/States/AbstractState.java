@@ -4,21 +4,22 @@ import Omega.Player;
 
 import java.util.Random;
 
-public abstract class AbstractState<T> implements State<T> {
+public abstract class AbstractState implements State<Player> {
+	
     protected Random r = new Random();
 
     @Override
-    public void enter(Player<T> t) {
+    public void enter(Player t) {
     	
     }
 
     @Override
-    public void execute(Player<T> t) {
+    public void execute(Player t) {
 
     }
 
     @Override
-    public void exit(Player<T> t) {
+    public void exit(Player t) {
         System.out.println("--------------------------------------");
         try {
             System.out.println("Thread: " + Thread.currentThread().getName());

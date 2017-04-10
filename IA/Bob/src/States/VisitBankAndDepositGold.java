@@ -5,8 +5,8 @@ import java.util.Random;
 import Omega.Bob;
 import Omega.Player;
 
-public class VisitBankAndDepositGold extends AbstractState<Bob> {
-	public static State<Bob> instance;
+public class VisitBankAndDepositGold extends AbstractState {
+	public static State<Player> instance;
 
 	Random r;
 
@@ -14,7 +14,7 @@ public class VisitBankAndDepositGold extends AbstractState<Bob> {
 		r = new Random();
 	}
 
-	public static State<Bob> getInstance(){
+	public static State<Player> getInstance(){
 		if(instance == null){
 			instance = new VisitBankAndDepositGold();
 		}
@@ -22,13 +22,13 @@ public class VisitBankAndDepositGold extends AbstractState<Bob> {
 	}
 
 	@Override
-	public void enter(Player<Bob> b) {
+	public void enter(Player b) {
 		System.out.println("---------------------------------");
 		System.out.println("Meus bolsos deveriam ser maiores.");
 	}
 
 	@Override
-	public void execute(Player<Bob> b) {
+	public void execute(Player b) {
 		if (((Bob) b).getNugets() >= 10) {
 			this.changeGold((Bob)b, 10);
 		} else {
@@ -38,7 +38,7 @@ public class VisitBankAndDepositGold extends AbstractState<Bob> {
 	}
 
 	@Override
-	public void exit(Player<Bob> b) {
+	public void exit(Player b) {
 		System.out.println("E a bufunfa aumeeeeenta. :D");
 		System.out.println("To com " + ((Bob) b).getGold() + " na busanfa!");
 

@@ -2,11 +2,11 @@ package States;
 
 import Omega.Player;
 
-public interface State<T> {
+public interface State<Player> {
 
-	public void enter(Player<T> t);
+	public void enter(Player t);
 	
-	public void execute(Player<T> t);
+	public void execute(Player t);
 	
-	public void exit(Player<T> t);
+	public void exit(Player t);
 }

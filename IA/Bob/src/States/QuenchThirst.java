@@ -5,30 +5,30 @@ import java.util.Random;
 import Omega.Bob;
 import Omega.Player;
 
-public class QuenchThirst extends AbstractState<Bob> {
+public class QuenchThirst extends AbstractState {
 
-	public static State<Bob> instance;
+	public static State<Player> instance;
 	Random r;
 
 	public QuenchThirst() {
 		this.r = new Random();
 	}
 
-	public static State<Bob> getInstance(){
+	public static State<Player> getInstance(){
         if(instance == null){
             instance = new QuenchThirst();
         }
         return instance;
     }
 	@Override
-	public void enter(Player<Bob> b) {
+	public void enter(Player b) {
 		System.out.println("-----------------------------------");
 		System.out.println("Acho que preciso de umas birita!");
 
 	}
 
 	@Override
-	public void execute(Player<Bob> b) {
+	public void execute(Player b) {
 		if (((Bob) b).getThirsty() > 10) {
 			int res = r.nextInt(7);
 			if (res == 7)
@@ -42,7 +42,7 @@ public class QuenchThirst extends AbstractState<Bob> {
 	}
 
 	@Override
-	public void exit(Player<Bob> b) {
+	public void exit(Player b) {
 		try {
 			Thread.currentThread();
 			Thread.sleep(1000);

@@ -2,22 +2,19 @@ package Omega;
 
 import java.util.Random;
 
-import States.State;
-
-public abstract class Player<T> {
+public abstract class Player {
 
 	protected Random r;
 	int THIRSTLIMIT = 450;
 	int thirst;
-	protected StateManager<T> manager;
+	protected StateManager manager;
 
-	public Player(State<T> def) {
+	public Player() {
 		r = new Random();
-		manager = new StateManager<T>(this);
-		this.manager.changeState(def);
+		manager = new StateManager(this);
 
 	}
-	public StateManager<T> getManager(){
+	public StateManager getManager(){
 		return this.manager;
 	}
 	public void addThirsty(int n) {
@@ -28,7 +25,7 @@ public abstract class Player<T> {
 	public int getThirsty() {
 		return thirst;
 	}
-
+	
 	public boolean isThirsty() {
 		if (this.thirst >= THIRSTLIMIT)
 			return true;

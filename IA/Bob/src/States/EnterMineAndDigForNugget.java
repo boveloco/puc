@@ -5,9 +5,9 @@ import java.util.Random;
 import Omega.Bob;
 import Omega.Player;
 
-public class EnterMineAndDigForNugget extends AbstractState<Bob> {
+public class EnterMineAndDigForNugget extends AbstractState {
 
-	public static State<Bob> instance;
+	public static State<Player> instance;
 
 	Random r;
 	private boolean flagGold;
@@ -19,7 +19,7 @@ public class EnterMineAndDigForNugget extends AbstractState<Bob> {
 	}
 
 	@Override
-	public void enter(Player<Bob> b) {
+	public void enter(Player b) {
 		System.out.println("--------------------------------------------");
 		System.out.println("Mining... Mining... Miningg...");
 		flagGold = false;
@@ -32,7 +32,7 @@ public class EnterMineAndDigForNugget extends AbstractState<Bob> {
 		}
 	}
 
-	public static State<Bob> getInstance() {
+	public static State<Player> getInstance() {
 		if (instance == null) {
 			instance = new EnterMineAndDigForNugget();
 		}
@@ -40,7 +40,7 @@ public class EnterMineAndDigForNugget extends AbstractState<Bob> {
 	}
 
 	@Override
-	public void execute(Player<Bob> b) {
+	public void execute(Player b) {
 		if(!(b instanceof Bob)){
 		    System.out.println("Erro Verificar bob");
 		    return;
@@ -81,7 +81,7 @@ public class EnterMineAndDigForNugget extends AbstractState<Bob> {
 	}
 
 	@Override
-	public void exit(Player<Bob> b) {
+	public void exit(Player b) {
 		System.out.println("-----------------------");
 		System.out.println("Status:");
 		System.out.println(((Bob) b).getFatigue());

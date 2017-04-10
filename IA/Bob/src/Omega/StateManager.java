@@ -2,22 +2,23 @@ package Omega;
 
 import States.State;
 
-public class StateManager<T> {
+public class StateManager {
 
-	private Player<T> p;
-	private State<T> currentState;
-	private State<T> lastState;
-	private State<T> lastGlobalState;
-	private State<T> globalState;
+	private Player p;
+	private State<Player> currentState;
+	private State<Player> lastState;
+	private State<Player> lastGlobalState;
+	private State<Player> globalState;
 
 
-	public StateManager(Player<T> p) {
+	public StateManager(Player p) {
 		this.p = p;
 		this.currentState = null;
 		this.lastState = null;
 		this.globalState = null;
 	}
-	public void changeState(State<T> s){
+	
+	public void changeState(State<Player> s){
 		if(this.currentState == null){
 			this.currentState = s;
 			this.lastState = s;
@@ -34,7 +35,7 @@ public class StateManager<T> {
 	}
 
 	public void blipState(){
-		State<T> s = currentState;
+		State<Player> s = currentState;
 		this.currentState.exit(p);
 		this.currentState = lastState;
 		lastState = s;
@@ -42,14 +43,14 @@ public class StateManager<T> {
 	}
 
 	public void blipGlobalState(){
-		State<T> s = globalState;
+		State<Player> s = globalState;
 		this.globalState.exit(p);
 		this.globalState = lastGlobalState;
 		this.lastGlobalState = s;
 		globalState.enter(p);
 	}
 
-	public void changeGlobalState(State<T> s){
+	public void changeGlobalState(State<Player> s){
 		if(this.globalState == null){
 			this.globalState = s;
 			this.lastGlobalState = s;
@@ -71,16 +72,16 @@ public class StateManager<T> {
 		if(this.currentState != null)
 			this.currentState.execute(p);
 	};
-	public Player<T> getP() {
+	public Player getP() {
 		return p;
 	}
-	public State<T> getLastState() {
+	public State<Player> getLastState() {
 		return lastState;
 	}
-	public State<T> getGlobalState() {
+	public State<Player> getGlobalState() {
 		return globalState;
 	}
-	public State<T> getCurrentState(){
+	public State<Player> getCurrentState(){
 		return this.currentState;
 	}
 }

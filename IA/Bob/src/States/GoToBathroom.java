@@ -4,7 +4,7 @@ import java.util.Random;
 
 import Omega.Player;
 
-public class GoToBathroom<P> extends AbstractState<P>{
+public class GoToBathroom extends AbstractState{
 
 	Random r;
 	public GoToBathroom() {
@@ -12,13 +12,13 @@ public class GoToBathroom<P> extends AbstractState<P>{
 	}
 
 	@Override
-	public void enter(Player<P> t) {
+	public void enter(Player t) {
 		System.out.println("Fui mijar!");
 		System.out.println(t.getClass() + " Entrou no banhiero");
 	}
 
 	@Override
-	public void execute(Player<P> t) {
+	public void execute(Player t) {
 		if (r.nextInt(4) > 0) {
 			t.getManager().blipState();;
 		}
