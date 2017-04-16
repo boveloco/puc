@@ -34,6 +34,17 @@ public class StateManager {
 		this.currentState.enter(p);
 	}
 
+	public boolean handleMessage(Message msg){
+		if (currentState.onMessage(p, msg)){
+			return true;
+		}
+		if (globalState != null && globalState.onMessage(p, msg)){
+			return true;
+		}
+
+		return false;
+	}
+
 	public void blipState(){
 		State<Player> s = currentState;
 		this.currentState.exit(p);
@@ -71,6 +82,17 @@ public class StateManager {
 			this.globalState.execute(p);
 		if(this.currentState != null)
 			this.currentState.execute(p);
+		if(this.currentState == null && this.globalState == null){
+			System.out.println("No State");
+			try {
+				//System.out.println("Thread: " + Thread.currentThread().getName());
+				Thread.currentThread();
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	};
 	public Player getP() {
 		return p;

@@ -2,8 +2,7 @@ package States;
 
 import java.util.Random;
 
-import Omega.Bob;
-import Omega.Player;
+import Omega.*;
 
 public class GoHomeAndSleepTillRested extends AbstractState {
 
@@ -25,6 +24,8 @@ public class GoHomeAndSleepTillRested extends AbstractState {
 		System.out.println("--------------------------------------------");
 		System.out.println("I'm Home, sweet home alabama!");
 
+		Player billie = Manager.getInstance().getPlayer("Billie");
+		MessageDispatcher.getInstance().dispatchMessage(b, billie, Messages.BillieWork.toString());
 	}
 
 	@Override
@@ -34,8 +35,13 @@ public class GoHomeAndSleepTillRested extends AbstractState {
 		if (((Bob)b).getFatigue() >= 0)
 			((Bob)b).addFatigue(-r.nextInt(9));
 
-		if (b.getThirsty() <= 0 && (((Bob)b).getFatigue() <= 0)) {
-			b.getManager().changeState(EnterMineAndDigForNugget.getInstance());
+		if (((Bob) b).isRested()) {
+			if(((Bob) b).hasBillieWorked()){
+				b.getManager().changeState(EnterMineAndDigForNugget.getInstance());
+				return;
+			}
+			System.out.println("Esperando o billie trabalhar, esse vagabundo e folgado em!!");
+
 		}
 	}
 

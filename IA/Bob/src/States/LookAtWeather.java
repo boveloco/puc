@@ -41,17 +41,4 @@ public class LookAtWeather extends AbstractState {
 
 	}
 
-	@Override
-	public void exit(Player t) {
-		System.out.println("Vou dar umas vorta.");
-		try {
-			Thread.currentThread();
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
 }

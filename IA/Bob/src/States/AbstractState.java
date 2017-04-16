@@ -1,5 +1,6 @@
 package States;
 
+import Omega.Message;
 import Omega.Player;
 
 import java.util.Random;
@@ -22,12 +23,16 @@ public abstract class AbstractState implements State<Player> {
     public void exit(Player t) {
         System.out.println("--------------------------------------");
         try {
-            System.out.println("Thread: " + Thread.currentThread().getName());
+            //System.out.println("Thread: " + Thread.currentThread().getName());
             Thread.currentThread();
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public boolean onMessage(Player t, Message msg) {
+        return false;
     }
 }

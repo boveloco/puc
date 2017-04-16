@@ -3,6 +3,7 @@ package States;
 import java.util.Random;
 
 import Omega.Bob;
+import Omega.Message;
 import Omega.Player;
 
 public class EnterMineAndDigForNugget extends AbstractState {
@@ -41,10 +42,6 @@ public class EnterMineAndDigForNugget extends AbstractState {
 
 	@Override
 	public void execute(Player b) {
-		if(!(b instanceof Bob)){
-		    System.out.println("Erro Verificar bob");
-		    return;
-		}
 		((Bob)b).addFatigue(r.nextInt(10));
 		((Bob)b).addThirsty(r.nextInt(5));
 		int res = r.nextInt(4);
