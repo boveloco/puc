@@ -1,4 +1,8 @@
 <?php
+global $servername;
+global $username;
+global $password;
+global $dbname;
 $servername = "localhost";
 $username = "teste";
 $password = "teste";
@@ -13,6 +17,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
+function selectAll(){
+    return "SELECT * FROM respostas ORDER BY tipo";
+}
+
 function prepareSelect($name, $tipo){
     return "SELECT * from respostas where tipo = '".$tipo."' and nome = '".$name."'";
 }
@@ -26,17 +34,27 @@ function prepareDelete($name, $tipo){
 }
 
 function doQuery($query){
-    global $conn;
-    return $conn->query($query);    
+    global $servername;
+    global $username;
+    global $password;
+    global $dbname;
+    $conn = new mysqli($servername, $username, $password, $dbname); 
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    return $conn->query($query);
 }
 
 function verifyItem($name, $tipo) {
+    // echo $name."--";
+    // echo $tipo."<br>";
+    // echo "rows".$res->num_rows."<br>";
     $sql = prepareSelect($name, $tipo);
-    $result = doQuery($sql);
-    if ($result->num_rows > 0) {
-        return true;
+    $res = doQuery($sql);
+    if ($res->num_rows > 0) {
+        return "Acertou!";
     } else {
-        return false;
+        return "Errou!";
     }    
 }
 
@@ -44,7 +62,7 @@ function verifyItem($name, $tipo) {
 #$sql = prepareInsert('teste','teste');
 #$sql = prepareDelete('teste', 'teste');
 #doQuery($sql);
-#verifyItem('jaca', 'commida');
+#verifyItem('asd', 'carro');
 # - Testes
 $conn->close();
 /*

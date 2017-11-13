@@ -1,16 +1,20 @@
 <?php 
     include "server.php";
 
-    if(!isset($_GET['nome']) && !isset($_GET['tipo'])){
-        return alert('Insira nome e tipo para deletar!');
+    session_start();
+    
+    if(!isset($_GET['nome']) || !isset($_GET['tipo']) || $_GET['nome'] == "" || $_GET['tipo'] == "") {
+        echo "<script>alert('Escreva algo!')</script>";
+        exit();
+        return;
     }
 
     $nome = $_GET['nome'];
     $tipo = $_GET['tipo'];
 
     $sql = prepareDelete($nome, $tipo);
-    doQuery($sql);
+    $ret = doQuery($sql);
 
-    return alert($nome.' and '.$tipo.' inseridos');
-
+    echo "<script>alert('dados Removidos')</script>";
+    echo "<a href=\"delete.html\"><button>Voltar</button></a>"
 ?>
