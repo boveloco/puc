@@ -17,4 +17,3 @@
 
     echo "<script>alert('dados inseridos')</script>";
 ?>
-
