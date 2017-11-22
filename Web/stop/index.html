@@ -1,4 +1,77 @@
-<a href="list.php"><button>Lista dos Itens</button></a>
-<a href="insert.html"><button>Inserir Item</button></a>
-<a href="delete.html"><button>Deletar Item</button></a>
-<a href="game.html"><button>--Jogar--</button></a>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stop Game</title>
+    </head>
+    <style>
+        .container {
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+        ul {
+           list-style-type: none;
+           margin: auto;
+           text-align: center;
+        }
+        button {
+            margin: 0 auto;
+            margin-top: 15px;
+            background-color: rgb(235, 15, 15);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            width: 200px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition: all .2s ease-in-out;
+            box-shadow: 5px 5px 4px rgba(0, 0, 0, .5);
+        }
+        img {
+            width: 600px;
+            height: 240px;
+            margin: 0 auto;
+            text-align: center
+        }
+        .playButton {
+            font-size: 35px;
+            width: 250px;
+        }
+        button:hover {
+            display: inline-block;
+            background-color: rgb(128, 0, 0);
+            transform: scale(1.05)
+        }
+
+    </style>
+    <body>
+        <div class="container">
+            <img
+                src="images/stop.png"
+                alt="Stop Game"
+                align="middle"
+            >
+            <div>
+                <ul id="redbutton">
+                    <li>
+                        <button onclick="window.location.href='game.html'" class="playButton">Jogar</button>
+                    </li>
+                    <li>
+                        <button onclick="window.location.href='list.php'">Lista dos Itens</button>
+                    </li>
+                    <li>
+                        <button onclick="window.location.href='insert.html'">Inserir Item</button>
+                    </li>
+                    <li>
+                        <button onclick="window.location.href='delete.html'">Deletar Item</button>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
+
+

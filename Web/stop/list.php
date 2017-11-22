@@ -7,9 +7,8 @@
     $respostas = doQuery($sql);
 
     if ($respostas->num_rows > 0) {
-        // output data of each row
         while($row = $respostas->fetch_assoc()) {
-            echo "<tr><td>".$row['tipo']."</td><td>".$row['nome']."</td></tr>";
+            echo "<tr style='border: 1px'><td>".$row['tipo']."</td><td>".$row['nome']."</td></tr>";
             
         }
     } else {
